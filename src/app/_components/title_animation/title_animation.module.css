@@ -1,0 +1,17 @@
+.title{
+  font-size: var(--font-size_title);
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.title_letter{
+  background: #0000;
+}
+
+@media (max-width: 768px) {
+  .title{
+    font-size: 4em;
+    width: fit-content;
+  }
+}
