@@ -2,8 +2,8 @@
   --background: #1E1E1E;
   --foreground: #2C2C2C;
   --font-color: #F3F3F3;
-  --font-size_title: 84px;
-  --font-size_desc: 22px;
+  --font-size_title: 72px;
+  --font-size_desc: 18px;
 
   --button-bg: #2C2C2C;
   --button-border_color: #767676;
@@ -35,6 +35,9 @@ main {
 section{
   height: 100vh;
   max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 * {
@@ -64,6 +67,31 @@ button {
   background: var(--button-bg);
 }
 
+.desc {
+  color: var(--font-color);
+  font-size: var(--font-size_desc);
+  width: 46rem;
+  padding-top: 20px;
+  text-align: left;
+}
+
+.button{
+  height: 46px;
+  padding: 0 20px;
+  border-radius: 7px;
+  border: 0.5px solid var(--button-border_color);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 17px;
+  width: fit-content;
+  margin-top: 20px;
+  transition: .444s all;
+}
+
+a{
+  transition: .444s all;
+}
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -73,8 +101,8 @@ button {
   }
 
   .button:hover {
-    opacity: var(--button-hover);
-    border-color: transparent;
+    opacity: var(--button-hover) !important;
+    border-color: transparent !important;
   }
 
   a.secondary:hover {
