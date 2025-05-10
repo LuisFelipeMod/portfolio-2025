@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./header.module.css";
 import * as motion from "motion/react-client";
+import Nav from "@/app/_components/nav";
 
 export default function Header() {
   return (
@@ -11,13 +12,7 @@ export default function Header() {
       transition={{ duration: 1, delay: 0.5 }}
     >
       <Image src="/logo.svg" width={128} height={36} alt="website logo" />
-      <nav className={styles.header_nav}>
-        <a className={styles.header_nav__item}>Sobre mim</a>
-        <a className={styles.header_nav__item}>Habilidades</a>
-        <a className={styles.header_nav__item}>Projetos</a>
-        <a className={styles.header_nav__item}>Trajetória</a>
-        <a className={styles.header_nav__item}>Contato</a>
-      </nav>
+      <Nav/>
     </motion.header>
   );
 }

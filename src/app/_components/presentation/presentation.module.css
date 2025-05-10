@@ -17,6 +17,10 @@
   margin-top: 20px;
 }
 
+.presentation_section > div{
+  display: flex;
+}
+
 .presentation_socials {
   display: flex;
   flex-direction: column;
@@ -29,6 +33,7 @@
   border: 0.1px solid var(--button-border_color);
   display: flex;
   transition: 0.444s ease-in-out;
+  margin-top: 0;
 }
 
 .presentation_socials .presentation_button svg {

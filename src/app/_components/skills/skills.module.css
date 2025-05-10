@@ -1,0 +1,158 @@
+.aboutMe_actions{
+  display: none;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.aboutMe_button {
+  display: flex;
+  color: #fff;
+  gap: 2px;
+  width: fit-content;
+  padding: 0.2rem 1rem;
+  border: 1px solid #e0e0e0;
+  background: #7d797900;
+  border-radius: 1rem;
+}
+
+.aboutMe_button__active {
+  color: #000;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.aboutMe_line{
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  opacity: 0.3;
+  display: none;
+}
+
+.aboutMe_skills{
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  gap: 0.6rem;
+  cursor: default;
+}
+
+.aboutMe_skills__item svg{
+  width: 50px;
+  height: 50px;
+}
+
+.aboutMe_skills__item{
+  border: 2px solid var(--button-border-color);
+  background: var(--button-bg);
+  color: var(--font-color);
+  width: fit-content;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.6rem;
+  font-size: 16px;
+  opacity: 0.7;
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.javascript_icon:hover > svg{
+  fill: #f7df1e;
+}
+
+
+.typescript_icon:hover > svg{
+  fill: #2d79c7;
+}
+
+.react_icon:hover > svg{
+  fill: #00d8ff;
+}
+
+.nextjs_icon:hover > svg{
+  fill: #000;
+}
+
+.vuejs_icon:hover > svg{
+  fill: #41b883;
+}
+
+.html_icon:hover > svg{
+  fill: #ff7816;
+}
+
+.css_icon:hover > svg{
+  fill: #2466f1;
+}
+
+.styled_icon:hover > svg{
+  fill: #ffcd3f;
+}
+
+.tailwind_icon:hover > svg{
+  fill: #00bcff;
+}
+
+.bootstrap_icon:hover > svg{
+  fill: #8d12fd;
+}
+
+.sass_icon:hover > svg{
+  fill: #f6009c;
+}
+
+.api_icon:hover > svg{
+  fill: #00d8ff;
+}
+
+.graphql_icon:hover > svg{
+  fill: #f6009c;
+}
+
+.reactquery_icon:hover > svg{
+  fill: #ff4154;
+}
+
+.reacthook_icon:hover > svg{
+  fill: #00d8ff;
+}
+
+.reactrouter_icon:hover > svg{
+  fill: #d0021b;
+}
+
+.shadcdn_icon:hover > svg{
+  fill: #000;
+}
+
+.nextui_icon:hover > svg{
+  fill: #000;
+}
+
+.jquery_icon:hover > svg{
+  fill: #0773b4;
+}
+
+.lighthouse_icon:hover > svg{
+  fill: #e64918;
+}
+
+.prisma_icon:hover > svg{
+  fill: #1a202c;
+}
+
+.nodejs_icon:hover > svg{
+  fill: #80be03;
+}
+
+.nestjs_icon:hover > svg{
+  fill: #ea2853;
+}
+.unable_icon > svg{
+  fill: currentColor;
+  transition: ease-in-out .333s;
+}
+
+

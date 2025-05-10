@@ -1,0 +1,13 @@
+.aboutme_section > div{
+  display: flex;
+}
+
+
+@media (max-width: 765px){
+  .aboutme_section img{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+}
