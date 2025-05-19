@@ -6,7 +6,7 @@ import { FaRegLaughBeam } from "react-icons/fa";
 
 export default function AboutMe() {
   return (
-    <section className={styles.aboutme_section}>
+    <section className={styles.aboutme_section} id="about_me">
       <div>
         <div className={styles.aboutme_box}>
           <TitleAnimation name="Sobre mim" />

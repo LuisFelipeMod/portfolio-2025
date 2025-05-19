@@ -31,7 +31,7 @@ import {
 
 export default function Skills() {
   return (
-    <section className={styles.aboutme_section}>
+    <section className={styles.aboutme_section} id="skills">
       <div className={styles.aboutme_box}>
         <TitleAnimation name="Conhecimentos e Habilidades" />
         <motion.div

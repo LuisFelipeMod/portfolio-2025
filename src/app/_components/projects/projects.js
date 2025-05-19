@@ -288,7 +288,7 @@ const SLIDES = [
 
 export default function Projects() {
   return (
-    <section>
+    <section id="projects">
       <div>
         <TitleAnimation name="Projetos" />
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />

@@ -33,16 +33,16 @@ export default function Nav() {
         >
           Projetos
         </motion.a>
-        <motion.a
+        {/* <motion.a
           whileHover={handleHover}
           href="#trajectory"
           className={styles.nav_item}
         >
           Trajetória
-        </motion.a>
+        </motion.a> */}
         <motion.a
           whileHover={handleHover}
-          href="#contact"
+          href="#contacts"
           className={styles.nav_item}
         >
           Contato
@@ -89,16 +89,16 @@ export default function Nav() {
               >
                 Projetos
               </motion.a>
-              <motion.a
+              {/*<motion.a
                 whileHover={handleHover}
                 href="#trajectory"
                 className={styles.nav_item}
               >
                 Trajetória
-              </motion.a>
+              </motion.a>*/}
               <motion.a
                 whileHover={handleHover}
-                href="#contact"
+                href="#contacts"
                 className={styles.nav_item}
               >
                 Contato

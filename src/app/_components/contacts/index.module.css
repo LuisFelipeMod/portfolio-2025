@@ -1,0 +1,40 @@
+.contact_desc {
+  color: var(--font-color);
+  font-size: var(--font-size_desc);
+  width: 46rem;
+  padding-left: 4.25rem;
+  padding-top: 20px;
+  text-align: left;
+  line-height: 150%;
+}
+
+.contact_desc > a {
+  text-decoration: underline;
+}
+
+.contact_button {
+  padding: 5px 10px;
+  border-radius: 11px;
+  border: 0.1px solid var(--button-border_color);
+  display: flex;
+  transition: 0.444s ease-in-out;
+  margin-top: 0;
+}
+
+.contact_button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.contact_button__box {
+  display: flex;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+@media (max-width: 768px){
+  .contact_desc{
+    padding-left: 0;
+    width: 100%;
+  }
+}
