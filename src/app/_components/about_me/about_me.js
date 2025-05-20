@@ -2,7 +2,7 @@ import TitleAnimation from "../title_animation/title_animation";
 import * as motion from "motion/react-client";
 import styles from "./about_me.module.css";
 import Image from "next/image";
-import { FaRegLaughBeam } from "react-icons/fa";
+import { FaFilePdf } from "react-icons/fa";
 
 export default function AboutMe() {
   return (
@@ -35,8 +35,10 @@ export default function AboutMe() {
             clássica.
           </motion.p>
 
-          <motion.button
+          <motion.a
             className="button"
+            href="/Luis Felipe Gonçalves Modesto - CV.pdf"
+            download
             initial={{
               top: "10px",
               opacity: 0,
@@ -53,9 +55,9 @@ export default function AboutMe() {
               ease: "easeOut",
             }}
           >
-            <FaRegLaughBeam />
-            Leia mais
-          </motion.button>
+            <FaFilePdf />
+            Baixar CV
+          </motion.a>
         </div>
         <Image src="/foto.png" width={286} height={261} alt=""></Image>
       </div>
