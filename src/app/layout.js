@@ -1,6 +1,7 @@
 import { Rubik } from "next/font/google";
 import "./globals.css";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 
 const rubik = Rubik({
@@ -18,8 +19,9 @@ export default function RootLayout({ children }) {
     <html lang="pt-br">
       <GoogleTagManager gtmId="GTM-PZ9J4588" />
       <body className={`${rubik.variable}`}>
-        {children} 
+        {children}
         <Analytics />
+        <GoogleAnalytics gaId="G-BCRJ8XMC20" />
       </body>
     </html>
   );
