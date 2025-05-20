@@ -1,9 +1,17 @@
+"use client";
 import styles from "./presentation.module.css";
 import * as motion from "motion/react-client";
 import { FaLinkedinIn, FaGithub, FaArrowDown } from "react-icons/fa";
 import TitleAnimation from "@/app/_components/title_animation/title_animation";
 
 export default function Presentation() {
+  const scrollToAboutMe = () => {
+    const element = document.getElementById("about_me");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className={styles.presentation_section}>
       <div>
@@ -33,6 +41,7 @@ export default function Presentation() {
           </motion.p>
           <motion.button
             className={`${styles.presentation_button} button`}
+            onClick={scrollToAboutMe}
             initial={{
               top: "10px",
               opacity: 0,
