@@ -1,5 +1,6 @@
 import { Rubik } from "next/font/google";
 import "./globals.css";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const rubik = Rubik({
   variable: "--font-rubik",
@@ -14,9 +15,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body className={`${rubik.variable}`}>
-        {children}
-      </body>
+      <GoogleTagManager gtmId="GTM-PZ9J4588" />
+      <body className={`${rubik.variable}`}>{children}</body>
     </html>
   );
 }
