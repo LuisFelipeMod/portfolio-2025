@@ -126,6 +126,8 @@ a {
   section {
     width: 100vw;
     padding: 0 3.4vw;
+    height: auto;
+    margin: 15rem 0;
   }
   .embla {
     --slide-size: 80% !important;
