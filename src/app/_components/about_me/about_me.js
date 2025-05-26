@@ -37,8 +37,8 @@ export default function AboutMe() {
 
           <motion.a
             className="button"
-            href="/Luis Felipe Gonçalves Modesto - CV.pdf"
-            download
+            href="https://drive.google.com/drive/folders/1Z8gFWfJcKTl3iMZAipcWCWJ8bs9GFz9w?usp=sharing"
+            target="_blank"
             initial={{
               top: "10px",
               opacity: 0,
