@@ -15,7 +15,7 @@ export default function Contact() {
             (14) 99808-4367
           </a>{" "}
           ou pelo meu e-mail:{" "}
-          <a href="mailto:luisgmodesto12@gmail.com">luigmodesto12@gmail.com</a>
+          <a href="mailto:luisgmodesto12@gmail.com">luisgmodesto12@gmail.com</a>
         </p>
         <div className={styles.contact_button__box}>
           <motion.a
