@@ -59,7 +59,7 @@ export default function AboutMe() {
             Baixar CV
           </motion.a>
         </div>
-        <Image src="/foto.png" width={286} height={261} alt=""></Image>
+        <Image src="/300x300.png" width={286} height={261} alt=""></Image>
       </div>
     </section>
   );
