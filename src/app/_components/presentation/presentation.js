@@ -16,7 +16,7 @@ export default function Presentation() {
     <section className={styles.presentation_section}>
       <div>
         <div className={styles.presentation_box}>
-          <TitleAnimation name="Luis/Felipe/C. Modesto" />
+          <TitleAnimation name="Luis/Felipe/G. Modesto" />
           <motion.p
             className={styles.presentation_desc}
             initial={{

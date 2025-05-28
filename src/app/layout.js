@@ -10,7 +10,7 @@ const rubik = Rubik({
 });
 
 export const metadata = {
-  title: "Luis Felipe C Modesto | Desenvolvedor Front-End",
+  title: "Luis Felipe G Modesto | Desenvolvedor Front-End",
   description: "Portfólio",
 };
 
