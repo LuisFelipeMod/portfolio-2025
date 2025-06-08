@@ -1,3 +1,7 @@
+.presentation_section{
+  margin-top: 15rem;
+}
+
 .presentation_box {
   height: fit-content;
   display: flex;
