@@ -2,6 +2,11 @@
   display: flex;
 }
 
+.aboutme_section > div > img{
+  border-radius: 5%;
+  align-self: center;
+}
+
 
 @media (max-width: 765px){
   .aboutme_section img{
