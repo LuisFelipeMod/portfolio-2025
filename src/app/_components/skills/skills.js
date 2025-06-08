@@ -27,6 +27,12 @@ import {
   SiPrisma,
   SiNodedotjs,
   SiNestjs,
+  SiJsonwebtokens,
+  SiEslint,
+  SiSqlalchemy,
+  SiSqlite,
+  SiMysql,
+  SiJest,
 } from "react-icons/si";
 
 export default function Skills() {
@@ -210,7 +216,42 @@ export default function Skills() {
             <SiLighthouse />
             <p>Lighthouse</p>
           </div>
-
+          <div
+            className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.jquery_icon}`}
+          >
+            <SiJquery />
+            <p>JQuery</p>
+          </div>
+          <div
+            className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.jwt_icon}`}
+          >
+            <SiJsonwebtokens />
+            <p>JSON Web Token (JWT)</p>
+          </div>
+          <div
+            className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.eslint_icon}`}
+          >
+            <SiEslint />
+            <p>ES Lint</p>
+          </div>
+          <div
+            className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.sqlite_icon}`}
+          >
+            <SiSqlite />
+            <p>SQLite</p>
+          </div>
+          <div
+            className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.mysql_icon}`}
+          >
+            <SiMysql />
+            <p>My SQL</p>
+          </div>
+          <div
+            className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.jest_icon}`}
+          >
+            <SiJest />
+            <p>Jest</p>
+          </div>
         </div>
       </div>
     </section>
