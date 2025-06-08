@@ -45,7 +45,7 @@ export default function Nav() {
           href="#contacts"
           className={styles.nav_item}
         >
-          Contato
+          Contatos
         </motion.a>
       </div>
       <div className={styles.nav_box__mobile}>
@@ -101,7 +101,7 @@ export default function Nav() {
                 href="#contacts"
                 className={styles.nav_item}
               >
-                Contato
+                Contatos
               </motion.a>
             </div>
           </div>
