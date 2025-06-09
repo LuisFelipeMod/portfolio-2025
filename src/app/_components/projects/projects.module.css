@@ -1,3 +1,9 @@
 section.projects{
   max-height: none;
 }
+
+@media (max-width: 768px) {
+  section.projects{
+    display: block;
+  }
+}

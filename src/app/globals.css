@@ -137,6 +137,7 @@ a {
     padding: 0 3.4vw;
     height: auto;
     margin: 10rem 0;
+    display: inline-table;
   }
   .embla {
     --slide-size: 80% !important;
