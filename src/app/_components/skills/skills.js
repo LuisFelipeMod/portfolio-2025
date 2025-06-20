@@ -205,12 +205,6 @@ export default function Skills() {
             <p>Next UI</p>
           </div>
           <div
-            className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.jquery_icon}`}
-          >
-            <SiJquery />
-            <p>JQuery</p>
-          </div>
-          <div
             className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.lighthouse_icon}`}
           >
             <SiLighthouse />
