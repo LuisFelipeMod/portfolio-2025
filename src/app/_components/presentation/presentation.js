@@ -35,7 +35,7 @@ export default function Presentation() {
               ease: "easeOut",
             }}
           >
-            Sou desenvolvedor especializado em front-end apaixonado pela área
+            Sou desenvolvedor full-stack apaixonado pela área
             tech. Estudo programação desde 2019 e possuo mais de 3 anos de
             experiência profissional.
           </motion.p>

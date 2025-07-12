@@ -29,7 +29,7 @@ export default function AboutMe() {
             }}
           >
             <p>
-              Olá! Eu sou o Luis Felipe, um Desenvolvedor Front-End Pleno com 3
+              Olá! Eu sou o Luis Felipe, um Desenvolvedor Full-Stack com 3
               anos de experiência apaixonado por transformar ideias em
               interfaces digitais intuitivas e de alta performance. Minha
               jornada na programação começou com o desejo de construir soluções
@@ -39,8 +39,8 @@ export default function AboutMe() {
             </p>
             <p>
               Sou um eterno aprendiz e sempre busco novos desafios. Embora meu
-              foco principal seja Front-End, tenho um grande interesse em
-              expandir minhas habilidades para o universo Fullstack e Mobile
+              foco principal seja Full-Stack, tenho um grande interesse em
+              expandir minhas habilidades para o universo Mobile
               (especialmente com Flutter), buscando sempre as melhores práticas
               e soluções escaláveis.
             </p>
