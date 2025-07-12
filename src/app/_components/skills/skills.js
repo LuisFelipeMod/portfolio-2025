@@ -33,6 +33,8 @@ import {
   SiSqlite,
   SiMysql,
   SiJest,
+  SiPhp,
+  SiPostgresql,
 } from "react-icons/si";
 
 export default function Skills() {
@@ -95,6 +97,12 @@ export default function Skills() {
           >
             <SiNextdotjs />
             <p>Next.js</p>
+          </div>
+          <div
+            className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.php_icon}`}
+          >
+            <SiPhp />
+            <p>PHP</p>
           </div>
           <div
             className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.vuejs_icon}`}
@@ -231,8 +239,8 @@ export default function Skills() {
           <div
             className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.sqlite_icon}`}
           >
-            <SiSqlite />
-            <p>SQLite</p>
+            <SiPostgresql />
+            <p>Postgre SQL</p>
           </div>
           <div
             className={`${styles.aboutMe_skills__item} ${styles.unable_icon} ${styles.mysql_icon}`}
