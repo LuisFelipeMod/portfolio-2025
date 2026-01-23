@@ -36,7 +36,7 @@ export default function Presentation() {
             }}
           >
             Sou desenvolvedor full-stack apaixonado pela área
-            tech. Estudo programação desde 2019 e possuo mais de 3 anos de
+            tech. Estudo programação desde 2019 e possuo mais de 4 anos de
             experiência profissional.
           </motion.p>
           <motion.button
