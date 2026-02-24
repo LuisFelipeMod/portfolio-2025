@@ -38,14 +38,14 @@ export default {
     subtitle: 'A selection of recent projects that showcase my skills and passion for development.',
     items: [
       {
+        title: 'Converge',
+        description: 'Collaborative board with real-time synchronization, allowing multiple users to work simultaneously on a shared space.',
+        demo: 'https://web-production-5e485.up.railway.app/'
+      },
+      {
         title: 'Service Order API',
         description: 'RESTful API built with Object-Oriented PHP for full management of clients, products, and service orders. Secure architecture with JWT authentication, data validation, logging system, and protection against SQL Injection and XSS — covered by unit and integration tests.',
         source: 'https://github.com/LuisFelipeMod/ordem-servico-api'
-      },
-      {
-        title: 'Service Order - Front End',
-        description: 'Business management interface built with HTML, Bootstrap, and jQuery, integrated with the REST API via AJAX requests. Features complete CRUDs, JWT authentication with LocalStorage persistence, and route-based access control.',
-        source: 'https://github.com/LuisFelipeMod/ordem-servico-front'
       },
       {
         title: 'Automated Testing',
@@ -63,6 +63,11 @@ export default {
     backHome: 'Back to Home',
     items: [
       {
+        title: 'Converge',
+        description: 'Collaborative board with real-time synchronization, allowing multiple users to work simultaneously on a shared space.',
+        demo: 'https://web-production-5e485.up.railway.app/'
+      },
+      {
         title: 'Service Order API',
         description: 'RESTful API built with Object-Oriented PHP for full management of clients, products, and service orders. Secure architecture with JWT authentication, data validation, logging system, and protection against SQL Injection and XSS — covered by unit and integration tests.',
         source: 'https://github.com/LuisFelipeMod/ordem-servico-api'
@@ -76,6 +81,11 @@ export default {
         title: 'Automated Testing',
         description: 'API with a full E2E test suite built in pure Node.js, with no external framework dependencies — demonstrating strong language fundamentals and software testing best practices.',
         source: 'https://github.com/LuisFelipeMod/testes-automatizados'
+      },
+      {
+        title: 'Portfolio',
+        description: 'Personal portfolio website built with Vue 3, Vite and Vue Router. Features dark/light theming, EN/PT internationalization, scroll animations and responsive design with CSS custom properties.',
+        source: 'https://github.com/LuisFelipeMod/portfolio-2025'
       }
     ]
   },

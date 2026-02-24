@@ -12,13 +12,17 @@ const projects = computed(() => t('allProjects.items').value)
 const techStacks = [
   ['PHP', 'REST API', 'JWT', 'MySQL'],
   ['HTML', 'Bootstrap', 'jQuery', 'AJAX'],
-  ['Node.js', 'E2E Testing', 'REST API']
+  ['Vue.js', 'Node.js', 'Socket.io', 'Real-time'],
+  ['Node.js', 'E2E Testing', 'REST API'],
+  ['Vue 3', 'Vite', 'Vue Router', 'CSS']
 ]
 
 const gradients = [
   'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
   'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
-  'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)'
+  'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
+  'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
+  'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)'
 ]
 
 onMounted(() => {

@@ -56,7 +56,7 @@ const projectItems = computed(() => t('projects.items').value)
 
 const techStacks = [
   ['PHP', 'REST API', 'JWT', 'MySQL'],
-  ['HTML', 'Bootstrap', 'jQuery', 'AJAX'],
+  ['Vue.js', 'Node.js', 'Socket.io', 'Real-time'],
   ['Node.js', 'E2E Testing', 'REST API']
 ]
 
