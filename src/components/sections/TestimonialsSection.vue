@@ -50,7 +50,7 @@ const testimonials = computed(() => t('testimonials.items').value)
 
 @media (min-width: 768px) {
   .testimonials__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

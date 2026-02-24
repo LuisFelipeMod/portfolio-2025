@@ -38,14 +38,14 @@ export default {
     subtitle: 'Uma seleção de projetos recentes que demonstram minhas habilidades e paixão por desenvolvimento.',
     items: [
       {
+        title: 'Converge',
+        description: 'Quadro colaborativo com sincronização em tempo real, permitindo que múltiplos usuários trabalhem simultaneamente em um espaço compartilhado.',
+        demo: 'https://web-production-5e485.up.railway.app/'
+      },
+      {
         title: 'Ordem de Serviço API',
         description: 'API RESTful desenvolvida em PHP Orientado a Objetos para gestão completa de clientes, produtos e ordens de serviço. Arquitetura segura com autenticação JWT, validação de dados, sistema de logs e proteção contra SQL Injection e XSS — coberta por testes unitários e de integração.',
         source: 'https://github.com/LuisFelipeMod/ordem-servico-api'
-      },
-      {
-        title: 'Ordem de Serviço - Front End',
-        description: 'Interface de gestão empresarial construída com HTML, Bootstrap e jQuery, integrada à API REST via requisições AJAX. Inclui CRUDs completos, autenticação JWT com persistência via LocalStorage e controle de acesso por rotas protegidas.',
-        source: 'https://github.com/LuisFelipeMod/ordem-servico-front'
       },
       {
         title: 'Testes Automatizados',
@@ -63,6 +63,11 @@ export default {
     backHome: 'Voltar ao Início',
     items: [
       {
+        title: 'Converge',
+        description: 'Quadro colaborativo com sincronização em tempo real, permitindo que múltiplos usuários trabalhem simultaneamente em um espaço compartilhado.',
+        demo: 'https://web-production-5e485.up.railway.app/'
+      },
+      {
         title: 'Ordem de Serviço API',
         description: 'API RESTful desenvolvida em PHP Orientado a Objetos para gestão completa de clientes, produtos e ordens de serviço. Arquitetura segura com autenticação JWT, validação de dados, sistema de logs e proteção contra SQL Injection e XSS — coberta por testes unitários e de integração.',
         source: 'https://github.com/LuisFelipeMod/ordem-servico-api'
@@ -76,6 +81,11 @@ export default {
         title: 'Testes Automatizados',
         description: 'API com suíte completa de testes E2E desenvolvida em Node.js puro, sem dependência de frameworks externos — demonstrando domínio dos fundamentos da linguagem e boas práticas de teste de software.',
         source: 'https://github.com/LuisFelipeMod/testes-automatizados'
+      },
+      {
+        title: 'Portfólio',
+        description: 'Site portfólio pessoal construído com Vue 3, Vite e Vue Router. Inclui tema dark/light, internacionalização EN/PT, animações de scroll e design responsivo com CSS custom properties.',
+        source: 'https://github.com/LuisFelipeMod/portfolio-2025'
       }
     ]
   },
@@ -87,13 +97,13 @@ export default {
       {
         title: 'Senior Software Engineer | Full-Stack',
         company: 'Telecontrol — Setor de P&D (IA e Inovação)',
-        period: '2025 - Presente',
+        period: 'Nov 2025 - Presente',
         description: 'Liderando a arquitetura Frontend do ecossistema de atendimentos (Chatbot/Dashboard). Criei o Design System, implementei agentes de revisão de código com IA e conduzi POCs com Gemini Pro e com o Chrome Dev Tools MCP, aumentando a produtividade da equipe em 64%.  Atuei desenvolvendo em arquitetura BFF e fui precursor em testes E2E com Cypress.'
       },
       {
         title: 'Software Engineer | Full-Stack',
         company: 'Telecontrol',
-        period: 'Nov 2025 - Presente',
+        period: 'Jul 2025 - Nov 2025',
         description: 'Otimizei a performance do Frontend em sistemas de alta carga medidos com Core Web Vitals (LCP, INP, CLS). Implementei integração robusta com APIs REST e gateways de comunicação (Chatbots/Webhooks). Promovido a Sênior em 3 meses pela reversão crítica de churn e estabilização do produto.'
       },
       {
