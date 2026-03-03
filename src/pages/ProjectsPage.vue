@@ -10,9 +10,9 @@ const { observe } = useScrollAnimation()
 const projects = computed(() => t('allProjects.items').value)
 
 const techStacks = [
+   ['Vue.js', 'Node.js', 'Socket.io', 'Real-time'],
   ['PHP', 'REST API', 'JWT', 'MySQL'],
   ['HTML', 'Bootstrap', 'jQuery', 'AJAX'],
-  ['Vue.js', 'Node.js', 'Socket.io', 'Real-time'],
   ['Node.js', 'E2E Testing', 'REST API'],
   ['Vue 3', 'Vite', 'Vue Router', 'CSS']
 ]
