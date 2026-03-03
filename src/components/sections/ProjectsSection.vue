@@ -55,8 +55,8 @@ const { t } = useLanguage()
 const projectItems = computed(() => t('projects.items').value)
 
 const techStacks = [
-  ['PHP', 'REST API', 'JWT', 'MySQL'],
   ['Vue.js', 'Node.js', 'Socket.io', 'Real-time'],
+  ['PHP', 'REST API', 'JWT', 'MySQL'],
   ['Node.js', 'E2E Testing', 'REST API']
 ]
 
