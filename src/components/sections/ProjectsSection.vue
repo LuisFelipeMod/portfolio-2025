@@ -11,7 +11,8 @@
       <div class="projects__grid">
         <BaseCard v-for="(project, i) in projectItems" :key="i" class="projects__card reveal" :style="{ transitionDelay: `${i * 120}ms` }">
           <div class="projects__image">
-            <div class="projects__image-placeholder" :style="{ background: gradients[i] }">
+            <img v-if="project.image" :src="project.image" :alt="project.title" class="projects__image-img" loading="lazy" />
+            <div v-else class="projects__image-placeholder" :style="{ background: gradients[i] }">
               <span class="projects__image-label">{{ project.title }}</span>
             </div>
           </div>
@@ -55,7 +56,10 @@ const { t } = useLanguage()
 const projectItems = computed(() => t('projects.items').value)
 
 const techStacks = [
-  ['Vue.js', 'Node.js', 'Socket.io', 'Real-time'],
+  ['Vue.js', 'SaaS', 'Railway'],
+  ['Vue.js', 'SaaS'],
+  ['NestJS', 'Vue 3', 'PostgreSQL', 'JWT'],
+  ['Vue 3', 'NestJS', 'CRDTs', 'Socket.io'],
   ['PHP', 'REST API', 'JWT', 'MySQL'],
   ['Node.js', 'E2E Testing', 'REST API']
 ]
@@ -63,7 +67,10 @@ const techStacks = [
 const gradients = [
   'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
   'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
-  'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)'
+  'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
+  'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)',
+  'linear-gradient(135deg, #ec4899 0%, #f59e0b 100%)',
+  'linear-gradient(135deg, #14b8a6 0%, #6366f1 100%)'
 ]
 </script>
 
@@ -90,6 +97,14 @@ const gradients = [
 
 .projects__image {
   overflow: hidden;
+}
+
+.projects__image-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  display: block;
 }
 
 .projects__image-placeholder {
