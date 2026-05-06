@@ -10,11 +10,14 @@ const { observe } = useScrollAnimation()
 const projects = computed(() => t('allProjects.items').value)
 
 const techStacks = [
-   ['Vue.js', 'Node.js', 'Socket.io', 'Real-time'],
+  ['Vue 3', 'NestJS', 'CRDTs', 'Socket.io'],
   ['PHP', 'REST API', 'JWT', 'MySQL'],
-  ['HTML', 'Bootstrap', 'jQuery', 'AJAX'],
+  ['Next.js', 'React', 'HTML/CSS'],
   ['Node.js', 'E2E Testing', 'REST API'],
-  ['Vue 3', 'Vite', 'Vue Router', 'CSS']
+  ['Vue 3', 'Vite', 'Vue Router', 'CSS'],
+  ['Vue.js', 'SaaS', 'Railway'],
+  ['Vue.js', 'SaaS'],
+  ['NestJS', 'Vue 3', 'PostgreSQL', 'JWT']
 ]
 
 const gradients = [
@@ -22,7 +25,10 @@ const gradients = [
   'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
   'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
   'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
-  'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)'
+  'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)',
+  'linear-gradient(135deg, #ec4899 0%, #f59e0b 100%)',
+  'linear-gradient(135deg, #14b8a6 0%, #6366f1 100%)',
+  'linear-gradient(135deg, #f97316 0%, #8b5cf6 100%)'
 ]
 
 onMounted(() => {
@@ -46,7 +52,8 @@ onMounted(() => {
       <div class="all-projects__grid">
         <BaseCard v-for="(project, i) in projects" :key="i" class="all-projects__card reveal" :style="{ transitionDelay: `${i * 120}ms` }">
           <div class="all-projects__image">
-            <div class="all-projects__image-placeholder" :style="{ background: gradients[i % gradients.length] }">
+            <img v-if="project.image" :src="project.image" :alt="project.title" class="all-projects__image-img" loading="lazy" />
+            <div v-else class="all-projects__image-placeholder" :style="{ background: gradients[i % gradients.length] }">
               <span class="all-projects__image-label">{{ project.title }}</span>
             </div>
           </div>
@@ -123,6 +130,14 @@ onMounted(() => {
 
 .all-projects__card :deep(.card) {
   padding: 0;
+}
+
+.all-projects__image-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  display: block;
 }
 
 .all-projects__image-placeholder {

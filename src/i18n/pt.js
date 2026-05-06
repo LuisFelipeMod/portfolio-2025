@@ -28,7 +28,7 @@ export default {
       },
       {
         title: 'Qualidade & AI Engineering',
-        description: 'Impulsionando qualidade com TDD (Jest), testes E2E (Cypress) e CI/CD (GitHub Actions). Utilizando agentes de código IA e integração com LLMs para aumentar a produtividade da equipe em 64%.'
+        description: 'Impulsionando qualidade com TDD (Jest), testes E2E (Cypress) e CI/CD (GitHub Actions). Utilizando agentes de código IA e integração com LLMs para aumentar a produtividade da equipe.'
       }
     ]
   },
@@ -38,9 +38,32 @@ export default {
     subtitle: 'Uma seleção de projetos recentes que demonstram minhas habilidades e paixão por desenvolvimento.',
     items: [
       {
+        title: 'ModestoLabs',
+        description: 'Site institucional do meu laboratório de SaaS. A ModestoLabs cria produtos SaaS para nichos específicos — simples por fora, sólidos por dentro. Cada linha de código tem um propósito.',
+        demo: 'https://modestolabs.up.railway.app/',
+        demoText: 'Link',
+        image: '/modestolabs.png'
+      },
+      {
+        title: 'Giraa — Landing Page',
+        description: 'Landing page apresentando um produto SaaS real do ModestoLabs. Seu salão lotado, sua gestão simples. Agendamentos automáticos, controle de clientes e relatórios — tudo num só app. Feito para salões e barbearias que precisam de agendamento online, notificações por WhatsApp, controle de caixa e métricas do negócio.',
+        demo: 'https://giraa-landing-page.up.railway.app/',
+        demoText: 'Link',
+        image: '/giraa.png'
+      },
+      {
+        title: 'Salão Leila',
+        description: 'Aplicação web fullstack de agendamento para salão de beleza, com módulo do cliente e painel administrativo completo. Backend em NestJS + TypeORM + PostgreSQL com autenticação JWT, rate limiting e documentação Swagger. Frontend em Vue 3 + Pinia + Tailwind CSS com fluxo de agendamento em 3 etapas e dashboard admin com métricas filtráveis. Coberta por 70 testes automatizados (unitários + E2E).',
+        demo: 'https://salao-leila.up.railway.app/',
+        source: 'https://github.com/LuisFelipeMod/salao-leila',
+        image: '/salao-leila.png'
+      },
+      {
         title: 'Converge',
-        description: 'Quadro colaborativo com sincronização em tempo real, permitindo que múltiplos usuários trabalhem simultaneamente em um espaço compartilhado.',
-        demo: 'https://web-production-5e485.up.railway.app/'
+        description: 'Plataforma de colaboração em tempo real (estilo Figma/Miro Lite) com canvas compartilhado, presence indicators e sincronização via CRDTs (Yjs). Arquitetura robusta suportando offline e alta latência nativamente. Frontend Vue 3 e backend NestJS com WebSockets e PostgreSQL para persistência incremental.',
+        demo: 'https://web-production-5e485.up.railway.app/',
+        source: 'https://github.com/LuisFelipeMod/converge-app',
+        image: '/converge.png'
       },
       {
         title: 'Ordem de Serviço API',
@@ -53,7 +76,7 @@ export default {
         source: 'https://github.com/LuisFelipeMod/testes-automatizados'
       }
     ],
-    liveDemo: 'Demo',
+    liveDemo: 'Link',
     source: 'Código',
     viewAll: 'Ver todos os projetos'
   },
@@ -64,8 +87,10 @@ export default {
     items: [
       {
         title: 'Converge',
-        description: 'Quadro colaborativo com sincronização em tempo real, permitindo que múltiplos usuários trabalhem simultaneamente em um espaço compartilhado.',
-        demo: 'https://web-production-5e485.up.railway.app/'
+        description: 'Plataforma de colaboração em tempo real (estilo Figma/Miro Lite) com canvas compartilhado, presence indicators e sincronização via CRDTs (Yjs). Arquitetura robusta suportando offline e alta latência nativamente. Frontend Vue 3 e backend NestJS com WebSockets e PostgreSQL para persistência incremental.',
+        demo: 'https://web-production-5e485.up.railway.app/',
+        source: 'https://github.com/LuisFelipeMod/converge-app',
+        image: '/converge.png'
       },
       {
         title: 'Ordem de Serviço API',
@@ -86,6 +111,27 @@ export default {
         title: 'Portfólio',
         description: 'Site portfólio pessoal construído com Vue 3, Vite e Vue Router. Inclui tema dark/light, internacionalização EN/PT, animações de scroll e design responsivo com CSS custom properties.',
         source: 'https://github.com/LuisFelipeMod/portfolio-2025'
+      },
+      {
+        title: 'ModestoLabs',
+        description: 'Site institucional do meu laboratório de SaaS. A ModestoLabs cria produtos SaaS para nichos específicos — simples por fora, sólidos por dentro. Cada linha de código tem um propósito.',
+        demo: 'https://modestolabs.up.railway.app/',
+        demoText: 'Link',
+        image: '/modestolabs.png'
+      },
+      {
+        title: 'Giraa — Landing Page',
+        description: 'Landing page apresentando um produto SaaS real do ModestoLabs. Seu salão lotado, sua gestão simples. Agendamentos automáticos, controle de clientes e relatórios — tudo num só app. Feito para salões e barbearias que precisam de agendamento online, notificações por WhatsApp, controle de caixa e métricas do negócio.',
+        demo: 'https://giraa-landing-page.up.railway.app/',
+        demoText: 'Link',
+        image: '/giraa.png'
+      },
+      {
+        title: 'Salão Leila',
+        description: 'Aplicação web fullstack de agendamento para salão de beleza, com módulo do cliente e painel administrativo completo. Backend em NestJS + TypeORM + PostgreSQL com autenticação JWT, rate limiting e documentação Swagger. Frontend em Vue 3 + Pinia + Tailwind CSS com fluxo de agendamento em 3 etapas e dashboard admin com métricas filtráveis. Coberta por 70 testes automatizados (unitários + E2E).',
+        demo: 'https://salao-leila.up.railway.app/',
+        source: 'https://github.com/LuisFelipeMod/salao-leila',
+        image: '/salao-leila.png'
       }
     ]
   },
@@ -98,7 +144,7 @@ export default {
         title: 'Senior Software Engineer | Full-Stack',
         company: 'Telecontrol — Setor de P&D (IA e Inovação)',
         period: 'Nov 2025 - Presente',
-        description: 'Liderando a arquitetura Frontend do ecossistema de atendimentos (Chatbot/Dashboard). Criei o Design System, implementei agentes de revisão de código com IA e conduzi POCs com Gemini Pro e com o Chrome Dev Tools MCP, aumentando a produtividade da equipe em 64%.  Atuei desenvolvendo em arquitetura BFF e fui precursor em testes E2E com Cypress.'
+        description: 'Tomei a frente da arquitetura e desenvolvimento do ecossistema de atendimentos (Chatbot/Dashboard). Criei o Design System, implementei fluxos para geração de código com IA e conduzi POCs com Claude Code/ Gemini Pro e com o Chrome Dev Tools MCP, aumentando a qualidade dos softwares e a produtividade da equipe. Atuei identificando e corrigindo erros em produção, solucionei gargalos, tudo isso em um projeto com arquitetura BFF. Além disso, tomei a iniciativa de implementar testes E2E com Cypress.'
       },
       {
         title: 'Software Engineer | Full-Stack',
