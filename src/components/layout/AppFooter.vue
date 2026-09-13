@@ -46,6 +46,11 @@ const year = new Date().getFullYear()
 }
 
 .footer__links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   color: var(--color-text-muted);
   transition: color var(--transition-fast);
 }

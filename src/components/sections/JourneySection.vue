@@ -41,7 +41,17 @@ const roles = computed(() => t('journey.roles').value)
   position: relative;
   max-width: 700px;
   margin: 0 auto;
-  padding-left: var(--space-8);
+  padding-left: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .timeline {
+    padding-left: var(--space-8);
+  }
+
+  .timeline__dot {
+    left: calc(-1 * var(--space-8) + 1px);
+  }
 }
 
 .timeline::before {
@@ -65,7 +75,7 @@ const roles = computed(() => t('journey.roles').value)
 
 .timeline__dot {
   position: absolute;
-  left: calc(-1 * var(--space-8) + 1px);
+  left: calc(-1 * var(--space-6) + 1px);
   top: 6px;
   width: 14px;
   height: 14px;

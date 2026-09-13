@@ -29,6 +29,7 @@ defineProps({
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
+  min-height: 44px;
   padding: var(--space-3) var(--space-6);
   font-size: var(--text-sm);
   font-weight: var(--font-semibold);

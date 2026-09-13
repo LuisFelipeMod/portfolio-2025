@@ -83,6 +83,12 @@ const gradients = [
 
 @media (min-width: 768px) {
   .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luis Felipe G. Modesto — Full-Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+      --font-body: "Outfit", system-ui, sans-serif;
+      --cream: #f3eee0;
+      --pink: #f2c6e3;
+      --lilac: #c9b8ff;
+      --indigo: #2a2aff;
+      --indigo-deep: #1616d4;
+      --gold: #d4b56a;
+      --radius: 22px;
+      --header-h: 72px;
+      --container: 1120px;
+      --ease: 220ms ease;
+    }
+
+    [data-theme="dark"] {
+      --bg: #07070b;
+      --surface: #16161f;
+      --surface-2: #1d1d28;
+      --text: #f3eee0;
+      --text-2: #c8c2b4;
+      --text-3: #8b8578;
+      --line: rgba(243, 238, 224, 0.14);
+      --line-strong: rgba(243, 238, 224, 0.22);
+      --glow: rgba(42, 42, 255, 0.34);
+      --header-bg: rgba(7, 7, 11, 0.72);
+      --input-bg: #0c0c11;
+      --kicker: #c9b8ff;
+    }
+
+    [data-theme="light"] {
+      --bg: #f3eee0;
+      --surface: #fffdf6;
+      --surface-2: #e7dfcc;
+      --text: #141218;
+      --text-2: #4a453c;
+      --text-3: #7a7366;
+      --line: rgba(20, 18, 24, 0.1);
+      --line-strong: rgba(20, 18, 24, 0.16);
+      --glow: rgba(42, 42, 255, 0.14);
+      --header-bg: rgba(243, 238, 224, 0.78);
+      --input-bg: #fffdf6;
+      --kicker: #2a2aff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { max-width: 100%; overflow-x: clip; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; border: 0; background: none; }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      pointer-events: none;
+      opacity: 0.09;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    [data-theme="light"] body::after { opacity: 0.055; mix-blend-mode: multiply; }
+
+    .wrap { width: min(100% - 32px, var(--container)); margin-inline: auto; }
+    @media (min-width: 768px) { .wrap { width: min(100% - 48px, var(--container)); } }
+
+    .section { padding-block: 72px; scroll-margin-top: 88px; }
+    @media (min-width: 768px) { .section { padding-block: 96px; } }
+
+    .header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      height: var(--header-h);
+      border-bottom: 1px solid transparent;
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .header.is-scrolled { border-bottom-color: var(--line); }
+    .header__bar {
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.55rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .logo span { color: var(--indigo); }
+
+    .nav {
+      display: none;
+      align-items: center;
+      gap: 28px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-2);
+      position: relative;
+    }
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 0; height: 2px;
+      background: var(--indigo);
+      transition: width var(--ease);
+    }
+    .nav a:hover { color: var(--text); }
+    .nav a:hover::after { width: 100%; }
+
+    .header__actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .chip {
+      min-height: 36px;
+      padding: 0 10px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--text-2);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    .chip:hover { color: var(--text); border-color: var(--lilac); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: transform var(--ease), background var(--ease), border-color var(--ease), color var(--ease);
+    }
+    .btn svg { flex-shrink: 0; }
+    .btn--fill { background: var(--indigo); color: var(--cream); }
+    .btn--fill:hover { background: var(--indigo-deep); transform: translateY(-1px); }
+    .btn--ghost { border: 1px solid var(--line-strong); color: var(--text); }
+    .btn--ghost:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-1px); }
+    .btn--talk { display: none; }
+
+    .burger { width: 44px; height: 44px; display: grid; place-items: center; }
+    .burger i { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; box-shadow: 0 -7px 0 var(--text), 0 7px 0 var(--text); }
+    .burger.is-open i { background: transparent; box-shadow: none; position: relative; }
+    .burger.is-open i::before,
+    .burger.is-open i::after {
+      content: "";
+      position: absolute;
+      left: 0; top: 0;
+      width: 20px; height: 2px;
+      background: var(--text);
+    }
+    .burger.is-open i::before { transform: rotate(45deg); }
+    .burger.is-open i::after { transform: rotate(-45deg); }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: var(--header-h) 0 0 0;
+      z-index: 40;
+      background: var(--bg);
+      padding: 32px;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .nav-mobile.is-open { display: flex; }
+    .nav-mobile a {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 10vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    @media (min-width: 768px) {
+      .nav { display: flex; }
+      .btn--talk { display: inline-flex; }
+      .burger, .nav-mobile { display: none !important; }
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--header-h) + 36px) 0 64px;
+      overflow: clip;
+    }
+    .hero__grid { display: grid; gap: 36px; align-items: center; }
+    .hero__copy { position: relative; z-index: 2; max-width: 36rem; }
+    .hero__greet {
+      margin: 0 0 14px;
+      color: var(--pink);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+    .hero__name {
+      margin: 0 0 20px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(3.4rem, 12vw, 6.4rem);
+      line-height: 0.86;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+    }
+    .hero__name em { font-style: normal; color: var(--pink); }
+    [data-theme="light"] .hero__name em { color: var(--indigo); }
+    .hero__sub {
+      margin: 0 0 28px;
+      max-width: 30rem;
+      color: var(--text-2);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+    .hero__social { display: flex; gap: 10px; }
+    .icon-btn {
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      color: var(--text-3);
+      transition: color var(--ease), border-color var(--ease), transform var(--ease);
+    }
+    .icon-btn:hover { color: var(--pink); border-color: var(--pink); transform: translateY(-2px); }
+
+    .hero__visual {
+      position: relative;
+      z-index: 1;
+      width: min(280px, 78vw);
+      height: min(280px, 40vh);
+      margin-inline: auto;
+      pointer-events: none;
+    }
+    .hero__visual canvas { width: 100%; height: 100%; display: block; }
+    .hero__halo {
+      position: absolute;
+      inset: 12%;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--glow), transparent 68%);
+      filter: blur(8px);
+    }
+
+    @media (min-width: 768px) {
+      .hero__grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 24px; }
+      .hero__visual {
+        width: min(520px, 54vw);
+        height: min(520px, calc(100dvh - 144px));
+        margin-inline: 0 0 auto;
+      }
+    }
+    @media (min-width: 1024px) {
+      .hero__visual {
+        width: min(620px, 48vw);
+        height: min(620px, calc(100dvh - 144px));
+      }
+    }
+
+    .kicker {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--indigo) 16%, transparent);
+      color: var(--kicker);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .sec-head { text-align: center; margin: 0 auto 48px; max-width: 640px; }
+    .sec-head h2 {
+      margin: 0 0 12px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+    .sec-head p { margin: 0; color: var(--text-2); }
+
+    .cards-3 { display: grid; gap: 18px; }
+    @media (min-width: 768px) { .cards-3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .cards-3 { grid-template-columns: repeat(3, 1fr); } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, color-mix(in srgb, var(--lilac) 18%, transparent) 0.8px, transparent 1.1px);
+      background-size: 7px 7px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+    .x-icon {
+      width: 56px; height: 56px;
+      display: grid; place-items: center;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      background: var(--indigo);
+      color: var(--cream);
+      position: relative;
+      z-index: 1;
+    }
+    .x-icon--2 { background: var(--pink); color: #2a1630; }
+    .x-icon--3 { background: var(--lilac); color: #1b1430; }
+    .card h3 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 10px;
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .card p { position: relative; z-index: 1; margin: 0 0 18px; color: var(--text-2); font-size: 0.92rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 1; }
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      color: var(--text-3);
+    }
+
+    .proj-grid { display: grid; gap: 18px; }
+    @media (min-width: 768px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .proj-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .proj { display: flex; flex-direction: column; padding: 0; min-width: 0; }
+    .proj__media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-radius: var(--radius) var(--radius) 0 0;
+      background: #12122a;
+    }
+    .proj__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.15) contrast(1.08) saturate(0.85);
+    }
+    .proj__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(42, 42, 255, 0.42), rgba(242, 198, 227, 0.22));
+      mix-blend-mode: color;
+      pointer-events: none;
+    }
+    .proj--gold .proj__media { box-shadow: inset 0 0 0 1px rgba(212, 181, 106, 0.55); }
+    .proj__ph {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(201, 184, 255, 0.35), transparent 40%),
+        linear-gradient(135deg, #1616d4, #1a1028);
+    }
+    .proj__body { padding: 20px 20px 22px; }
+    .proj h3 { margin: 0 0 8px; font-size: 1.35rem; }
+    .proj p {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .proj__links { display: flex; gap: 16px; margin-top: 4px; }
+    .proj__links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+    .proj__links a:hover { color: var(--pink); }
+    .more { display: flex; justify-content: center; margin-top: 36px; }
+    .more a { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--kicker); }
+
+    .timeline { position: relative; max-width: 720px; margin: 0 auto; padding-left: 28px; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 6px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(var(--indigo), var(--pink));
+    }
+    .role { position: relative; padding-bottom: 36px; }
+    .role:last-child { padding-bottom: 0; }
+    .role::before {
+      content: "";
+      position: absolute;
+      left: -26px; top: 6px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--indigo);
+    }
+    .role__date {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--indigo) 16%, transparent);
+      color: var(--kicker);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .role h3 {
+      margin: 0 0 4px;
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+    .role__co { margin: 0 0 10px; color: var(--text-3); font-size: 0.9rem; }
+    .role p { margin: 0; color: var(--text-2); font-size: 0.92rem; }
+
+    .quotes { display: grid; gap: 18px; }
+    @media (min-width: 768px) { .quotes { grid-template-columns: repeat(2, 1fr); } }
+    .quote mark {
+      display: block;
+      margin-bottom: 14px;
+      font-family: var(--font-display);
+      font-size: 3rem;
+      line-height: 0.6;
+      color: var(--pink);
+      background: none;
+    }
+    .quote p { font-style: italic; }
+    .who { display: flex; align-items: center; gap: 12px; }
+    .ava {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--indigo);
+      color: var(--cream);
+      font-weight: 700;
+    }
+    .who strong { display: block; font-size: 0.9rem; }
+    .who span { color: var(--text-3); font-size: 0.75rem; }
+
+    .contact {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 28px 22px;
+      border-radius: 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 0 0 1px rgba(212, 181, 106, 0.22), 0 20px 60px rgba(0, 0, 0, 0.18);
+    }
+    .contact__grid { display: grid; gap: 32px; }
+    @media (min-width: 768px) {
+      .contact { padding: 48px 40px; }
+      .contact__grid { grid-template-columns: 1fr 1fr; align-items: start; gap: 48px; }
+    }
+    .contact h2 {
+      margin: 0 0 14px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+    .contact h2 em { font-style: normal; color: var(--kicker); }
+    .contact .lead { margin: 0 0 20px; color: var(--text-2); }
+    .mail {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: var(--text-2);
+      font-size: 0.92rem;
+      overflow-wrap: anywhere;
+    }
+    .mail:hover { color: var(--pink); }
+    .form { display: grid; gap: 12px; }
+    .field {
+      width: 100%;
+      min-height: 46px;
+      padding: 12px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 14px;
+      background: var(--input-bg);
+    }
+    .field:focus { outline: 2px solid var(--indigo); outline-offset: 1px; }
+    textarea.field { min-height: 128px; resize: vertical; }
+    .ok { color: #3dd68c; font-size: 0.88rem; margin: 0; }
+    .err { color: #ff6b7a; font-size: 0.88rem; margin: 0; }
+
+    .footer { border-top: 1px solid var(--line); padding: 28px 0; }
+    .footer__in {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer p { margin: 0; color: var(--text-3); font-size: 0.85rem; }
+    .footer__links { display: flex; gap: 8px; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="wrap header__bar">
+      <a class="logo" href="#about" aria-label="LM.Dev — Home">LM<span>.Dev</span></a>
+      <ul class="nav" role="list">
+        <li><a href="#about" data-i18n="nav.about"></a></li>
+        <li><a href="#expertise" data-i18n="nav.expertise"></a></li>
+        <li><a href="#projects" data-i18n="nav.projects"></a></li>
+        <li><a href="#experience" data-i18n="nav.experience"></a></li>
+      </ul>
+      <div class="header__actions">
+        <button class="chip" id="langBtn" type="button" aria-label="Toggle language">PT</button>
+        <button class="chip" id="themeBtn" type="button" aria-label="Toggle theme">◐</button>
+        <a class="btn btn--fill btn--talk" href="#contact" data-i18n="nav.letsTalk"></a>
+        <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false"><i></i></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" hidden>
+    <a href="#about" data-i18n="nav.about"></a>
+    <a href="#expertise" data-i18n="nav.expertise"></a>
+    <a href="#projects" data-i18n="nav.projects"></a>
+    <a href="#experience" data-i18n="nav.experience"></a>
+    <a href="#contact" data-i18n="nav.letsTalk"></a>
+  </nav>
+
+  <main>
+    <section class="hero" id="about" aria-label="Introduction">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="hero__greet reveal" data-i18n="hero.greeting"></p>
+          <h1 class="hero__name reveal">Luis Felipe<br /><em>G. Modesto</em></h1>
+          <p class="hero__sub reveal" data-i18n="hero.subtitle"></p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--fill" href="#projects">
+              <span data-i18n="hero.viewWork"></span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="cv.pdf" download>
+              <span data-i18n="hero.downloadCv"></span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>
+            </a>
+          </div>
+          <div class="hero__social reveal">
+            <a class="icon-btn" href="https://github.com/LuisFelipeMod" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/luisfelipegm/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__halo"></div>
+          <canvas id="rings"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="expertise" aria-label="Expertise">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="kicker" data-i18n="expertise.badge"></span>
+          <h2 data-i18n="expertise.title"></h2>
+          <p data-i18n="expertise.subtitle"></p>
+        </div>
+        <div class="cards-3" id="expertiseGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-label="Featured projects">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="kicker" data-i18n="projects.badge"></span>
+          <h2 data-i18n="projects.title"></h2>
+          <p data-i18n="projects.subtitle"></p>
+        </div>
+        <div class="proj-grid" id="projectGrid"></div>
+        <div class="more reveal">
+          <a href="#projects"><span data-i18n="projects.viewAll"></span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience" aria-label="Professional journey">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="kicker" data-i18n="journey.badge"></span>
+          <h2 data-i18n="journey.title"></h2>
+          <p data-i18n="journey.subtitle"></p>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials" aria-label="Testimonials">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="kicker" data-i18n="testimonials.badge"></span>
+          <h2 data-i18n="testimonials.title"></h2>
+          <p data-i18n="testimonials.subtitle"></p>
+        </div>
+        <div class="quotes" id="quotes"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-label="Contact">
+      <div class="wrap">
+        <div class="contact">
+          <div class="contact__grid">
+            <div>
+              <h2>
+                <span data-i18n="contact.heading1"></span><br />
+                <em data-i18n="contact.heading2"></em>
+                <span data-i18n="contact.heading3"></span>
+              </h2>
+              <p class="lead" data-i18n="contact.subtitle"></p>
+              <a class="mail" href="mailto:luisgmodesto12@gmail.com">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                luisgmodesto12@gmail.com
+              </a>
+              <div class="hero__social">
+                <a class="icon-btn" href="https://github.com/LuisFelipeMod" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a class="icon-btn" href="https://www.linkedin.com/in/luisfelipegm/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+              </div>
+            </div>
+            <form class="form" id="contactForm">
+              <input class="field" id="nameField" type="text" required />
+              <input class="field" id="emailField" type="email" required />
+              <textarea class="field" id="msgField" rows="5" required></textarea>
+              <button class="btn btn--fill" type="submit" id="submitBtn"></button>
+              <p class="ok" id="formOk" hidden></p>
+              <p class="err" id="formErr" hidden></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <p>© <span id="year"></span> Luis Felipe Modesto. <span data-i18n="footer.rights"></span></p>
+      <div class="footer__links">
+        <a class="icon-btn" href="https://github.com/LuisFelipeMod" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/luisfelipegm/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const I18N = {
+      pt: {
+        nav: { about: "Sobre", expertise: "Expertise", projects: "Projetos", experience: "Experiência", letsTalk: "Fale Comigo" },
+        hero: {
+          greeting: "Olá, eu sou",
+          subtitle: "Engenheiro Full-Stack Sênior construindo produtos escaláveis com TypeScript, Node.js, React e Next.js.",
+          viewWork: "Ver Projetos",
+          downloadCv: "Baixar CV"
+        },
+        expertise: {
+          badge: "O Que Faço",
+          title: "Minha Expertise",
+          subtitle: "Especializado em construir aplicações web modernas e escaláveis com foco em performance, qualidade e desenvolvimento aumentado por IA.",
+          items: [
+            { title: "Desenvolvimento Frontend", description: "Construindo interfaces responsivas e de alta performance com React, Vue.js, Next.js e TypeScript. Experiência em GraphQL e otimização de Core Web Vitals (LCP, INP, CLS)." },
+            { title: "Backend & Arquitetura", description: "Projetando backends robustos com NestJS e Node.js/TypeScript. Experiência em BFF, APIs REST, arquitetura event-driven com Socket.io e Redis, e múltiplos bancos (PostgreSQL, MySQL, MongoDB)." },
+            { title: "Qualidade & AI Engineering", description: "Qualidade com TDD (Jest), testes E2E (Cypress) e CI/CD (GitHub Actions). Uso IA no ciclo de desenvolvimento (Claude Code, Cursor e Kiro) com revisão crítica do output." }
+          ]
+        },
+        projects: {
+          badge: "Portfólio",
+          title: "Projetos em Destaque",
+          subtitle: "Uma seleção de projetos recentes que demonstram minhas habilidades e paixão por desenvolvimento.",
+          liveDemo: "Link",
+          source: "Código",
+          viewAll: "Ver todos os projetos",
+          items: [
+            { title: "ModestoLabs", description: "Site institucional do meu laboratório de SaaS. A ModestoLabs cria produtos SaaS para nichos específicos — simples por fora, sólidos por dentro. Cada linha de código tem um propósito.", demo: "https://modestolabs.up.railway.app/", image: "public/modestolabs.png" },
+            { title: "Giraa — Landing Page", description: "Landing page apresentando um produto SaaS real do ModestoLabs. Seu salão lotado, sua gestão simples. Agendamentos automáticos, controle de clientes e relatórios — tudo num só app. Feito para salões e barbearias que precisam de agendamento online, notificações por WhatsApp, controle de caixa e métricas do negócio.", demo: "https://giraa-landing-page.up.railway.app/", image: "public/giraa.png" },
+            { title: "Salão Leila", description: "Aplicação web fullstack de agendamento para salão de beleza, com módulo do cliente e painel administrativo completo. Backend em NestJS + TypeORM + PostgreSQL com autenticação JWT, rate limiting e documentação Swagger. Frontend em Vue 3 + Pinia + Tailwind CSS com fluxo de agendamento em 3 etapas e dashboard admin com métricas filtráveis. Coberta por 70 testes automatizados (unitários + E2E).", demo: "https://salao-leila.up.railway.app/", source: "https://github.com/LuisFelipeMod/salao-leila", image: "public/salao-leila.png" },
+            { title: "Converge", description: "Plataforma de colaboração em tempo real (estilo Figma/Miro Lite) com canvas compartilhado, presence indicators e sincronização via CRDTs (Yjs). Arquitetura robusta suportando offline e alta latência nativamente. Frontend Vue 3 e backend NestJS com WebSockets e PostgreSQL para persistência incremental.", demo: "https://web-production-5e485.up.railway.app/", source: "https://github.com/LuisFelipeMod/converge-app", image: "public/converge.png" },
+            { title: "Ordem de Serviço API", description: "API RESTful desenvolvida em PHP Orientado a Objetos para gestão completa de clientes, produtos e ordens de serviço. Arquitetura segura com autenticação JWT, validação de dados, sistema de logs e proteção contra SQL Injection e XSS — coberta por testes unitários e de integração.", source: "https://github.com/LuisFelipeMod/ordem-servico-api" },
+            { title: "Testes Automatizados", description: "API com suíte completa de testes E2E desenvolvida em Node.js puro, sem dependência de frameworks externos — demonstrando domínio dos fundamentos da linguagem e boas práticas de teste de software.", source: "https://github.com/LuisFelipeMod/testes-automatizados" }
+          ]
+        },
+        journey: {
+          badge: "Carreira",
+          title: "Jornada Profissional",
+          subtitle: "Meu caminho pela indústria de tecnologia, construindo expertise e entregando soluções de impacto.",
+          roles: [
+            { title: "Senior Software Engineer | Full-Stack", company: "Telecontrol — P&D (IA e Inovação)", period: "Nov 2025 - Presente", description: "Introduzi IA no ciclo de desenvolvimento (Claude Code, Cursor e Kiro), acelerando entregas com revisão crítica. Implementei integrações resilientes (REST, Socket.io) e evoluí o BFF em NestJS/TypeScript com PostgreSQL, MySQL e MongoDB. Estabeleci Docker, Cypress E2E e Jest TDD no CI/CD, e desenvolvi fluxos colaborativos em tempo real (Yjs/CRDTs) com a Meta API (WhatsApp)." },
+            { title: "Software Engineer | Full-Stack", company: "Telecontrol", period: "Jul 2025 - Nov 2025", description: "Manutenção e evolução de sistemas críticos com APIs REST e gateways de comunicação (Chatbots/Webhooks). Otimizei a performance do frontend com Core Web Vitals (LCP, INP, CLS). Promovido a Sênior por reverter churn crítico e estabilizar produto de alto impacto." },
+            { title: "Software Engineer | Frontend", company: "Eficaz Marketing", period: "Jan 2022 - Fev 2025", description: "Desenvolvimento de e-commerce headless com React, Next.js, TypeScript e GraphQL, com foco em escalabilidade e performance. Defini stack técnica e padrões de projeto, com cultura de Code Review e mentoria. Redesign da Toca Imóveis, com 104 apartamentos vendidos em tempo recorde." }
+          ]
+        },
+        testimonials: {
+          badge: "Feedback",
+          title: "O Que Dizem",
+          subtitle: "Depoimentos de colegas e clientes com quem tive o prazer de trabalhar.",
+          items: [
+            { name: "Gabriel Cesar Ragonha Rodrigues", role: "Desenvolvedor Full-Stack", text: "Recomendo o Luis Felipe para qualquer vaga de desenvolvedor. Ele é um profissional exemplar, dedicado e com atributos fundamentais para a área de tecnologia. Luis agrega muito valor a qualquer projeto, porque é capaz de se relacionar bem com os outros e sempre se esforçar para colaborar com a equipe. Eu tenho convicção de que ele terá sucesso em qualquer desafio profissional que se propuser a enfrentar, é um prazer tê-lo na minha equipe de trabalho." },
+            { name: "Victor Turra Florêncio", role: "Desenvolvedor Full-Stack", text: "O Modesto, como chamamos na equipe, é um profissional muito dinâmico. Consegue se adaptar aos desafios de diferentes domínios de tecnologia facilmente. Uma das coisas que posso destacar é que ele é um dos poucos profissionais focados em gestão de tempo para produtividade. Está frequentemente utilizando métodos de organização para gerir as demandas do time de forma eficiente. Outro ponto que posso mencionar é o fato do Modesto estar sempre se adaptando às tecnologias mais usadas no mercado e também de outros domínios de soluções. Trabalhando junto com o Modesto pude perceber também sua facilidade com trabalho em squads, sendo hábil em gerenciar projetos e entregas com uma comunicação muito limpa e assertiva." }
+          ]
+        },
+        contact: {
+          heading1: "Vamos construir algo",
+          heading2: "extraordinário ",
+          heading3: "juntos",
+          subtitle: "Tem um projeto em mente? Vamos discutir como podemos trabalhar juntos para dar vida às suas ideias.",
+          namePlaceholder: "Seu nome",
+          emailPlaceholder: "Seu endereço de e-mail",
+          messagePlaceholder: "Conte-me sobre seu projeto...",
+          submit: "Enviar Mensagem",
+          success: "Obrigado! Retornarei em breve.",
+          error: "Algo deu errado. Por favor, tente novamente."
+        },
+        footer: { rights: "Todos os direitos reservados." }
+      },
+      en: {
+        nav: { about: "About", expertise: "Expertise", projects: "Projects", experience: "Experience", letsTalk: "Let's Talk" },
+        hero: {
+          greeting: "Hello, I'm",
+          subtitle: "Senior Full-Stack Engineer building scalable products with TypeScript, Node.js, React, and Next.js.",
+          viewWork: "View My Work",
+          downloadCv: "Download CV"
+        },
+        expertise: {
+          badge: "What I Do",
+          title: "My Expertise",
+          subtitle: "Specialized in building modern, scalable web applications with a focus on performance, quality, and AI-augmented development.",
+          items: [
+            { title: "Frontend Development", description: "Building responsive, high-performance interfaces with React, Vue.js, Next.js, and TypeScript. Experienced in GraphQL and Core Web Vitals optimization (LCP, INP, CLS)." },
+            { title: "Backend & Architecture", description: "Designing robust backends with NestJS and Node.js/TypeScript. Experienced in BFF patterns, REST APIs, event-driven architecture with Socket.io and Redis, and multiple databases (PostgreSQL, MySQL, MongoDB)." },
+            { title: "Quality & AI Engineering", description: "Driving quality with TDD (Jest), E2E tests (Cypress), and CI/CD (GitHub Actions). Using AI in the development cycle (Claude Code, Cursor, and Kiro) with critical review of the output." }
+          ]
+        },
+        projects: {
+          badge: "Portfolio",
+          title: "Featured Projects",
+          subtitle: "A selection of recent projects that showcase my skills and passion for development.",
+          liveDemo: "Link",
+          source: "Source",
+          viewAll: "View all projects",
+          items: [
+            { title: "ModestoLabs", description: "Institutional website for my SaaS laboratory. ModestoLabs creates SaaS products for specific niches — simple on the outside, solid on the inside. Every line of code has a purpose.", demo: "https://modestolabs.up.railway.app/", image: "public/modestolabs.png" },
+            { title: "Giraa — Landing Page", description: "Landing page presenting a real SaaS product from ModestoLabs. Your salon fully booked, your management simple. Automatic scheduling, client control and reports — all in one app. Built for salons and barbershops that need scheduling, WhatsApp notifications, cash flow control, and business metrics.", demo: "https://giraa-landing-page.up.railway.app/", image: "public/giraa.png" },
+            { title: "Salão Leila", description: "Fullstack web application for beauty salon booking, with client module and complete admin panel. Backend in NestJS + TypeORM + PostgreSQL with JWT authentication, rate limiting, and Swagger docs. Frontend in Vue 3 + Pinia + Tailwind CSS with 3-step booking flow and an admin dashboard with filterable metrics. Covered by 70 automated tests (unit + E2E).", demo: "https://salao-leila.up.railway.app/", source: "https://github.com/LuisFelipeMod/salao-leila", image: "public/salao-leila.png" },
+            { title: "Converge", description: "Real-time collaboration platform (Figma/Miro Lite style) with a shared canvas, presence indicators, and CRDT synchronization (Yjs). Robust architecture natively supporting offline mode and high latency. Built with Vue 3 frontend and NestJS backend via WebSockets and PostgreSQL for incremental persistence.", demo: "https://web-production-5e485.up.railway.app/", source: "https://github.com/LuisFelipeMod/converge-app", image: "public/converge.png" },
+            { title: "Service Order API", description: "RESTful API built with Object-Oriented PHP for full management of clients, products, and service orders. Secure architecture with JWT authentication, data validation, logging system, and protection against SQL Injection and XSS — covered by unit and integration tests.", source: "https://github.com/LuisFelipeMod/ordem-servico-api" },
+            { title: "Automated Testing", description: "API with a full E2E test suite built in pure Node.js, with no external framework dependencies — demonstrating strong language fundamentals and software testing best practices.", source: "https://github.com/LuisFelipeMod/testes-automatizados" }
+          ]
+        },
+        journey: {
+          badge: "Career",
+          title: "Professional Journey",
+          subtitle: "My path through the tech industry, building expertise and delivering impactful solutions.",
+          roles: [
+            { title: "Senior Software Engineer | Full-Stack", company: "Telecontrol — R&D (AI & Innovation)", period: "Nov 2025 - Present", description: "Brought AI into the development cycle (Claude Code, Cursor, and Kiro), speeding up delivery with critical review. Built resilient integrations (REST, Socket.io) and evolved a NestJS/TypeScript BFF across PostgreSQL, MySQL, and MongoDB. Established Docker, Cypress E2E, and Jest TDD in CI/CD, and shipped a real-time flow platform (Yjs/CRDTs) with Meta API (WhatsApp) integrations." },
+            { title: "Software Engineer | Full-Stack", company: "Telecontrol", period: "Jul 2025 - Nov 2025", description: "Maintained and evolved critical systems with REST APIs and communication gateways (chatbots/webhooks). Optimized frontend performance with Core Web Vitals (LCP, INP, CLS). Promoted to Senior for reversing critical churn and stabilizing a high-impact product." },
+            { title: "Software Engineer | Frontend", company: "Eficaz Marketing", period: "Jan 2022 - Feb 2025", description: "Built headless e-commerce with React, Next.js, TypeScript, and GraphQL, focused on scalability and performance. Defined the tech stack and project standards, plus a Code Review and mentoring culture. Redesigned Toca Imóveis, which sold 104 apartments in record time." }
+          ]
+        },
+        testimonials: {
+          badge: "Feedback",
+          title: "What People Say",
+          subtitle: "Testimonials from colleagues and clients I've had the pleasure of working with.",
+          items: [
+            { name: "Gabriel Cesar Ragonha Rodrigues", role: "Full-Stack Developer", text: "I recommend Luis Felipe for any developer position. He is an exemplary professional, dedicated and with fundamental attributes for the tech industry. Luis adds great value to any project because he builds strong relationships and always strives to collaborate with the team. I am convinced he will succeed in any professional challenge he takes on — it is a pleasure to have him on my team." },
+            { name: "Victor Turra Florêncio", role: "Full-Stack Developer", text: "Modesto, as we call him on the team, is a very dynamic professional. He adapts to challenges across different technology domains with ease. One thing I can highlight is that he is one of the few professionals focused on time management for productivity, frequently using organizational methods to manage team demands efficiently. Another point worth mentioning is that Modesto is always keeping up with the most in-demand technologies in the market. Working alongside him, I also noticed his ease with squad-based work — he is skilled at managing projects and deliveries with very clear and assertive communication." }
+          ]
+        },
+        contact: {
+          heading1: "Let's build something",
+          heading2: "extraordinary ",
+          heading3: "together",
+          subtitle: "Have a project in mind? Let's discuss how we can work together to bring your ideas to life.",
+          namePlaceholder: "Your name",
+          emailPlaceholder: "Your email address",
+          messagePlaceholder: "Tell me about your project...",
+          submit: "Send Message",
+          success: "Thanks! I'll get back to you soon.",
+          error: "Something went wrong. Please try again."
+        },
+        footer: { rights: "All rights reserved." }
+      }
+    };
+
+    const TAGS = [
+      ["React", "Vue.js", "Next.js", "TypeScript", "GraphQL"],
+      ["NestJS", "Node.js", "Socket.io", "Redis", "PostgreSQL"],
+      ["Jest", "Cypress", "TDD", "CI/CD"]
+    ];
+    const ICONS = [
+      '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>',
+      '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></svg>',
+      '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>'
+    ];
+    const TECH = [
+      ["Vue.js", "SaaS", "Railway"],
+      ["Vue.js", "SaaS"],
+      ["NestJS", "Vue 3", "PostgreSQL", "JWT"],
+      ["Vue 3", "NestJS", "CRDTs", "Socket.io"],
+      ["PHP", "REST API", "JWT", "MySQL"],
+      ["Node.js", "E2E Testing", "REST API"]
+    ];
+
+    const state = {
+      lang: localStorage.getItem("rd-lang") || "pt",
+      theme: localStorage.getItem("rd-theme") || "dark"
+    };
+
+    const t = (path) => path.split(".").reduce((acc, key) => acc && acc[key], I18N[state.lang]);
+
+    function applyStaticCopy() {
+      document.documentElement.lang = state.lang === "pt" ? "pt-BR" : "en";
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const value = t(el.dataset.i18n);
+        if (typeof value === "string") el.textContent = value;
+      });
+      const c = t("contact");
+      document.getElementById("nameField").placeholder = c.namePlaceholder;
+      document.getElementById("emailField").placeholder = c.emailPlaceholder;
+      document.getElementById("msgField").placeholder = c.messagePlaceholder;
+      document.getElementById("submitBtn").textContent = c.submit;
+      document.getElementById("formOk").textContent = c.success;
+      document.getElementById("formErr").textContent = c.error;
+      document.getElementById("langBtn").textContent = state.lang === "pt" ? "PT" : "EN";
+    }
+
+    function renderBlocks() {
+      const exp = t("expertise.items");
+      document.getElementById("expertiseGrid").innerHTML = exp.map((item, i) => `
+        <article class="card reveal">
+          <div class="x-icon ${i === 1 ? "x-icon--2" : i === 2 ? "x-icon--3" : ""}">${ICONS[i]}</div>
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <div class="tags">${TAGS[i].map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
+        </article>
+      `).join("");
+
+      const live = t("projects.liveDemo");
+      const src = t("projects.source");
+      document.getElementById("projectGrid").innerHTML = t("projects.items").map((p, i) => `
+        <article class="card proj reveal ${i === 0 ? "proj--gold" : ""}">
+          <div class="proj__media">
+            ${p.image ? `<img src="${p.image}" alt="${p.title}" loading="lazy" />` : `<div class="proj__ph">${p.title}</div>`}
+          </div>
+          <div class="proj__body">
+            <h3>${p.title}</h3>
+            <p>${p.description}</p>
+            <div class="tags">${TECH[i].map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
+            <div class="proj__links">
+              ${p.demo ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer">${live}</a>` : ""}
+              ${p.source ? `<a href="${p.source}" target="_blank" rel="noopener noreferrer">${src}</a>` : ""}
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      document.getElementById("timeline").innerHTML = t("journey.roles").map((role) => `
+        <article class="role reveal">
+          <span class="role__date">${role.period}</span>
+          <h3>${role.title}</h3>
+          <p class="role__co">${role.company}</p>
+          <p>${role.description}</p>
+        </article>
+      `).join("");
+
+      document.getElementById("quotes").innerHTML = t("testimonials.items").map((item) => `
+        <article class="card quote reveal">
+          <mark>“</mark>
+          <p>${item.text}</p>
+          <div class="who">
+            <div class="ava">${item.name.charAt(0)}</div>
+            <div><strong>${item.name}</strong><span>${item.role}</span></div>
+          </div>
+        </article>
+      `).join("");
+
+      observeReveals();
+    }
+
+    function observeReveals() {
+      const nodes = document.querySelectorAll(".reveal");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        nodes.forEach((el) => el.classList.add("is-in"));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.04, rootMargin: "80px 0px" });
+      nodes.forEach((el) => io.observe(el));
+      setTimeout(() => nodes.forEach((el) => el.classList.add("is-in")), 1400);
+    }
+
+    function applyTheme() {
+      document.documentElement.setAttribute("data-theme", state.theme);
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    applyTheme();
+    applyStaticCopy();
+    renderBlocks();
+
+    document.getElementById("langBtn").addEventListener("click", () => {
+      state.lang = state.lang === "pt" ? "en" : "pt";
+      localStorage.setItem("rd-lang", state.lang);
+      applyStaticCopy();
+      renderBlocks();
+    });
+
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      state.theme = state.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("rd-theme", state.theme);
+      applyTheme();
+    });
+
+    const burger = document.getElementById("burger");
+    const mobileNav = document.getElementById("mobileNav");
+    const closeMenu = () => {
+      burger.classList.remove("is-open");
+      mobileNav.classList.remove("is-open");
+      mobileNav.hidden = true;
+      burger.setAttribute("aria-expanded", "false");
+    };
+    burger.addEventListener("click", () => {
+      const open = !mobileNav.classList.contains("is-open");
+      burger.classList.toggle("is-open", open);
+      mobileNav.classList.toggle("is-open", open);
+      mobileNav.hidden = !open;
+      burger.setAttribute("aria-expanded", String(open));
+    });
+    mobileNav.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+    const header = document.getElementById("header");
+    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    document.getElementById("contactForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.getElementById("formOk").hidden = false;
+      document.getElementById("formErr").hidden = true;
+      e.target.reset();
+    });
+
+    (function rings() {
+      const canvas = document.getElementById("rings");
+      const wrap = canvas.parentElement;
+      const ctx = canvas.getContext("2d");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let raf = 0;
+
+      const resize = () => {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = wrap.clientWidth;
+        const h = wrap.clientHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      };
+
+      const colors = () => {
+        const dark = document.documentElement.getAttribute("data-theme") !== "light";
+        return dark
+          ? ["#2a2aff", "#c9b8ff", "#f2c6e3", "#d4b56a"]
+          : ["#2a2aff", "#1616d4", "#7a3d9a", "#b8923a"];
+      };
+
+      const draw = (t) => {
+        const w = wrap.clientWidth;
+        const h = wrap.clientHeight;
+        ctx.clearRect(0, 0, w, h);
+        const cx = w * 0.52;
+        const cy = h * 0.5;
+        const maxR = Math.min(w, h) * 0.46;
+        const palette = colors();
+        const spin = reduce ? 0 : t * 0.00018;
+        for (let i = 0; i < 7; i++) {
+          const r = maxR * (0.22 + i * 0.12);
+          ctx.beginPath();
+          ctx.ellipse(cx, cy, r, r * 0.92, spin + i * 0.22, 0.15, Math.PI * 1.72);
+          ctx.strokeStyle = palette[i % palette.length];
+          ctx.globalAlpha = 0.28 + (i % 3) * 0.12;
+          ctx.lineWidth = i === 3 ? 2.4 : 1.35;
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+        if (!reduce) raf = requestAnimationFrame(draw);
+      };
+
+      resize();
+      draw(0);
+      window.addEventListener("resize", () => {
+        resize();
+        if (reduce) draw(0);
+      });
+      new MutationObserver(() => { if (reduce) draw(0); }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    })();
+  </script>
+</body>
+</html>

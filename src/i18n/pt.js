@@ -8,10 +8,9 @@ export default {
   },
   hero: {
     greeting: 'Olá, eu sou',
-    subtitle: 'Desenvolvedor Full-Stack Sênior criando experiências web modernas com código limpo e design impecável.',
+    subtitle: 'Engenheiro Full-Stack Sênior construindo produtos escaláveis com TypeScript, Node.js, React e Next.js.',
     viewWork: 'Ver Projetos',
-    downloadCv: 'Baixar CV',
-    codePassion: 'Construindo produtos digitais escaláveis'
+    downloadCv: 'Baixar CV'
   },
   expertise: {
     badge: 'O Que Faço',
@@ -20,15 +19,15 @@ export default {
     items: [
       {
         title: 'Desenvolvimento Frontend',
-        description: 'Construindo interfaces responsivas e de alta performance com React, Vue.js, Next.js e Nuxt. Especialista em Design Systems, SSR, micro-frontends e otimização de Core Web Vitals.'
+        description: 'Construindo interfaces responsivas e de alta performance com React, Vue.js, Next.js e TypeScript. Experiência em GraphQL e otimização de Core Web Vitals (LCP, INP, CLS).'
       },
       {
         title: 'Backend & Arquitetura',
-        description: 'Projetando soluções robustas no servidor com Node.js, Express e PHP. Experiência em APIs REST, padrões BFF, comunicação em tempo real com Socket.io e modernização de sistemas legados.'
+        description: 'Projetando backends robustos com NestJS e Node.js/TypeScript. Experiência em BFF, APIs REST, arquitetura event-driven com Socket.io e Redis, e múltiplos bancos (PostgreSQL, MySQL, MongoDB).'
       },
       {
         title: 'Qualidade & AI Engineering',
-        description: 'Impulsionando qualidade com TDD (Jest), testes E2E (Cypress) e CI/CD (GitHub Actions). Utilizando agentes de código IA e integração com LLMs para aumentar a produtividade da equipe.'
+        description: 'Qualidade com TDD (Jest), testes E2E (Cypress) e CI/CD (GitHub Actions). Uso IA no ciclo de desenvolvimento (Claude Code, Cursor e Kiro) com revisão crítica do output.'
       }
     ]
   },
@@ -142,21 +141,21 @@ export default {
     roles: [
       {
         title: 'Senior Software Engineer | Full-Stack',
-        company: 'Telecontrol — Setor de P&D (IA e Inovação)',
+        company: 'Telecontrol — P&D (IA e Inovação)',
         period: 'Nov 2025 - Presente',
-        description: 'Tomei a frente da arquitetura e desenvolvimento do ecossistema de atendimentos (Chatbot/Dashboard). Criei o Design System, implementei fluxos para geração de código com IA e conduzi POCs com Claude Code/ Gemini Pro e com o Chrome Dev Tools MCP, aumentando a qualidade dos softwares e a produtividade da equipe. Atuei identificando e corrigindo erros em produção, solucionei gargalos, tudo isso em um projeto com arquitetura BFF. Além disso, tomei a iniciativa de implementar testes E2E com Cypress.'
+        description: 'Introduzi IA no ciclo de desenvolvimento (Claude Code, Cursor e Kiro), acelerando entregas com revisão crítica. Implementei integrações resilientes (REST, Socket.io) e evoluí o BFF em NestJS/TypeScript com PostgreSQL, MySQL e MongoDB. Estabeleci Docker, Cypress E2E e Jest TDD no CI/CD, e desenvolvi fluxos colaborativos em tempo real (Yjs/CRDTs) com a Meta API (WhatsApp).'
       },
       {
         title: 'Software Engineer | Full-Stack',
         company: 'Telecontrol',
         period: 'Jul 2025 - Nov 2025',
-        description: 'Otimizei a performance do Frontend em sistemas de alta carga medidos com Core Web Vitals (LCP, INP, CLS). Implementei integração robusta com APIs REST e gateways de comunicação (Chatbots/Webhooks). Promovido a Sênior em 3 meses pela reversão crítica de churn e estabilização do produto.'
+        description: 'Manutenção e evolução de sistemas críticos com APIs REST e gateways de comunicação (Chatbots/Webhooks). Otimizei a performance do frontend com Core Web Vitals (LCP, INP, CLS). Promovido a Sênior por reverter churn crítico e estabilizar produto de alto impacto.'
       },
       {
         title: 'Software Engineer | Frontend',
         company: 'Eficaz Marketing',
-        period: 'Nov 2022 - Fev 2025',
-        description: 'Liderança técnica no desenvolvimento de e-commerce headless complexo com React, TypeScript e GraphQL. Entregamos o site da Toca Imóveis que vendeu 104 apartamentos em tempo recorde. Estabeleci cultura de Code Review e defini stack técnica e padrões de projeto focados em manutenibilidade.'
+        period: 'Jan 2022 - Fev 2025',
+        description: 'Desenvolvimento de e-commerce headless com React, Next.js, TypeScript e GraphQL, com foco em escalabilidade e performance. Defini stack técnica e padrões de projeto, com cultura de Code Review e mentoria. Redesign da Toca Imóveis, com 104 apartamentos vendidos em tempo recorde.'
       }
     ]
   },

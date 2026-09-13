@@ -1,12 +1,26 @@
 <template>
   <div class="section-title">
     <span v-if="badge" class="section-title__badge">{{ badge }}</span>
-    <h2 class="section-title__heading">{{ title }}</h2>
+    <h2 class="section-title__heading">
+      <FoldText
+        :key="title"
+        :text="title"
+        split-by="char"
+        hinge="top"
+        trigger="scroll"
+        :duration="0.6"
+        :stagger="0.035"
+        :crease-shading="0.4"
+        :perspective="700"
+      />
+    </h2>
     <p v-if="subtitle" class="section-title__subtitle">{{ subtitle }}</p>
   </div>
 </template>
 
 <script setup>
+import FoldText from '../effects/FoldText.vue'
+
 defineProps({
   title: { type: String, required: true },
   subtitle: String,
@@ -18,6 +32,11 @@ defineProps({
 .section-title {
   text-align: center;
   margin-bottom: var(--space-12);
+  max-width: 100%;
+}
+
+.section-title :deep(.fold-text__live) {
+  justify-content: center;
 }
 
 .section-title__badge {
@@ -38,6 +57,9 @@ defineProps({
   font-weight: var(--font-bold);
   color: var(--color-text);
   margin-bottom: var(--space-4);
+  max-width: 100%;
+  padding-block: 0.12em;
+  overflow-wrap: break-word;
 }
 
 .section-title__subtitle {

@@ -38,8 +38,8 @@ const icons = [
 
 const tags = [
   ['React', 'Vue.js', 'Next.js', 'TypeScript'],
-  ['Node.js', 'Express', 'PHP', 'Socket.io'],
-  ['Cypress', 'Jest', 'CI/CD', 'AI Agents']
+  ['NestJS', 'Node.js', 'Socket.io', 'Docker'],
+  ['Jest', 'Cypress', 'TDD', 'CI/CD']
 ]
 </script>
 
@@ -51,6 +51,12 @@ const tags = [
 }
 
 @media (min-width: 768px) {
+  .expertise__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
   .expertise__grid {
     grid-template-columns: repeat(3, 1fr);
   }

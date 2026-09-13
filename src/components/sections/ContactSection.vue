@@ -120,7 +120,7 @@ const handleSubmit = async () => {
 .contact {
   max-width: 900px;
   margin: 0 auto;
-  padding: var(--space-16) var(--space-8);
+  padding: var(--space-8) var(--space-5);
   background: var(--color-surface);
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-2xl);
@@ -128,13 +128,27 @@ const handleSubmit = async () => {
 
 .contact__content {
   display: flex;
-  gap: var(--space-12);
-  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .contact {
+    padding: var(--space-16) var(--space-8);
+  }
+
+  .contact__content {
+    flex-direction: row;
+    gap: var(--space-12);
+    align-items: flex-start;
+  }
 }
 
 .contact__text {
   flex: 1;
   text-align: left;
+  min-width: 0;
 }
 
 .contact__heading {
@@ -142,6 +156,7 @@ const handleSubmit = async () => {
   font-weight: var(--font-bold);
   margin-bottom: var(--space-4);
   line-height: var(--leading-tight);
+  overflow-wrap: break-word;
 }
 
 .contact__heading--accent {
@@ -158,11 +173,15 @@ const handleSubmit = async () => {
 .contact__email {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-2);
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   transition: color var(--transition-fast);
   margin-bottom: var(--space-4);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact__email:hover {
@@ -197,7 +216,15 @@ const handleSubmit = async () => {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  align-items: flex-end;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .contact__form {
+    align-items: flex-end;
+  }
 }
 
 .contact__field {
@@ -206,6 +233,7 @@ const handleSubmit = async () => {
 
 .contact__input {
   width: 100%;
+  min-height: 44px;
   padding: var(--space-3) var(--space-4);
   background: var(--color-input-bg);
   border: 1px solid var(--color-input-border);
@@ -243,20 +271,5 @@ const handleSubmit = async () => {
 .contact__form .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-@media (max-width: 768px) {
-  .contact__content {
-    flex-direction: column;
-    gap: var(--space-8);
-  }
-
-  .contact__subtitle {
-    margin-bottom: 0;
-  }
-
-  .contact {
-    padding: var(--space-10) var(--space-6);
-  }
 }
 </style>

@@ -1,5 +1,30 @@
 <template>
   <section id="about" class="hero section" aria-label="Introduction">
+    <div class="hero__rings" aria-hidden="true">
+      <MagicRings
+        :color="ringsColor"
+        :color-two="ringsColorTwo"
+        :opacity="ringsOpacity"
+        :ring-count="ringsCount"
+        :speed="0.65"
+        :attenuation="ringsAttenuation"
+        :line-thickness="ringsThickness"
+        :base-radius="0.28"
+        :radius-step="0.09"
+        :scale-rate="0.08"
+        :noise-amount="ringsNoise"
+        :rotation="18"
+        :ring-gap="ringsGap"
+        :fade-in="0.7"
+        :fade-out="0.5"
+        :follow-mouse="!isNarrow"
+        :mouse-influence="isNarrow ? 0 : 0.14"
+        :hover-scale="1.08"
+        :parallax="0.04"
+        :click-burst="false"
+        :ink-composite="!isDark"
+      />
+    </div>
     <div class="container hero__container">
       <div class="hero__content">
         <p class="hero__greeting reveal">{{ t('hero.greeting').value }}</p>
@@ -29,59 +54,156 @@
           </a>
         </div>
       </div>
-
-      <div class="hero__visual reveal">
-        <div class="hero__code-editor">
-          <div class="hero__code-header">
-            <div class="hero__code-dots">
-              <span class="dot dot--red"></span>
-              <span class="dot dot--yellow"></span>
-              <span class="dot dot--green"></span>
-            </div>
-            <span class="hero__code-filename">developer.ts</span>
-          </div>
-          <pre class="hero__code-body"><code><span class="code-keyword">const</span> <span class="code-var">developer</span> = {
-  <span class="code-key">name</span>: <span class="code-string">"Luis Felipe"</span>,
-  <span class="code-key">role</span>: <span class="code-string">"Full-Stack Engineer"</span>,
-  <span class="code-key">skills</span>: [
-    <span class="code-string">"Vue.js"</span>, <span class="code-string">"React"</span>, <span class="code-string">"Next.js"</span>,  <span class="code-string">"Nest.js"</span>, 
-    <span class="code-string">"Node.js"</span>, <span class="code-string">"TypeScript"</span>, <span class="code-string">"PHP"</span>, <span class="code-string">"Laravel"</span>
-  ],
-  <span class="code-key">passion</span>: <span class="code-string">"{{ t('hero.codePassion').value }}"</span>
-};</code></pre>
-        </div>
-      </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useSmoothScroll } from '../../composables/useSmoothScroll.js'
 import { useLanguage } from '../../composables/useLanguage.js'
+import { useTheme } from '../../composables/useTheme.js'
 import BaseButton from '../ui/BaseButton.vue'
+import MagicRings from '../effects/MagicRings.vue'
 
 const { scrollTo } = useSmoothScroll()
 const { t } = useLanguage()
+const { theme } = useTheme()
+
+const isNarrow = ref(false)
+let narrowQuery
+const syncNarrow = () => { isNarrow.value = narrowQuery.matches }
+
+onMounted(() => {
+  narrowQuery = window.matchMedia('(max-width: 767px)')
+  syncNarrow()
+  narrowQuery.addEventListener('change', syncNarrow)
+})
+
+onUnmounted(() => {
+  narrowQuery?.removeEventListener('change', syncNarrow)
+})
+
+const isDark = computed(() => theme.value === 'dark')
+const ringsColor = computed(() => isDark.value ? '#60a5fa' : '#1d4ed8')
+const ringsColorTwo = computed(() => isDark.value ? '#67e8f9' : '#0891b2')
+const ringsCount = computed(() => isNarrow.value ? 3 : 5)
+const ringsThickness = computed(() => {
+  if (isDark.value) return isNarrow.value ? 1.5 : 2
+  return isNarrow.value ? 14 : 11
+})
+const ringsAttenuation = computed(() => {
+  if (isDark.value) return isNarrow.value ? 12 : 9
+  return isNarrow.value ? 38 : 46
+})
+const ringsOpacity = computed(() => {
+  if (isDark.value) return isNarrow.value ? 0.58 : 0.94
+  return isNarrow.value ? 0.95 : 1
+})
+const ringsNoise = computed(() => isDark.value ? 0.05 : 0.012)
+const ringsGap = computed(() => isDark.value ? 1.6 : 1.85)
 </script>
 
 <style scoped>
 .hero {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding-top: 72px;
+  overflow: visible;
+}
+
+.hero__rings {
+  --rings-opacity: 0.58;
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  top: 36%;
+  right: 0;
+  bottom: auto;
+  left: auto;
+  width: min(280px, 78vw);
+  height: min(280px, 40vh);
+  transform: none;
+  opacity: 0;
+  animation: hero-rings-in 1.4s ease 0.25s forwards;
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    #000 68%,
+    rgba(0, 0, 0, 0.7) 88%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    #000 68%,
+    rgba(0, 0, 0, 0.7) 88%,
+    transparent 100%
+  );
+}
+
+@keyframes hero-rings-in {
+  from { opacity: 0; }
+  to { opacity: var(--rings-opacity, 0.58); }
 }
 
 .hero__container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-12);
-  align-items: center;
+  position: relative;
+  z-index: auto;
+  width: 100%;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 36rem;
+  width: min(100%, 36rem);
+}
+
+@media (min-width: 768px) {
+  .hero__rings {
+    --rings-opacity: 0.85;
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    width: min(520px, 54vw);
+    height: min(520px, calc(100dvh - 144px));
+    transform: translateY(-50%);
+    -webkit-mask-image: radial-gradient(
+      ellipse 100% 100% at 52% 50%,
+      #000 72%,
+      rgba(0, 0, 0, 0.7) 90%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 100% 100% at 52% 50%,
+      #000 72%,
+      rgba(0, 0, 0, 0.7) 90%,
+      transparent 100%
+    );
+  }
 }
 
 @media (min-width: 1024px) {
-  .hero__container {
-    grid-template-columns: 1fr 1fr;
+  .hero__rings {
+    --rings-opacity: 1;
+    top: 50%;
+    right: 2%;
+    width: min(680px, 50vw);
+    height: min(680px, calc(100dvh - 144px));
+  }
+}
+
+:global([data-theme="light"]) .hero__rings {
+  mix-blend-mode: normal;
+  filter: saturate(1.7) contrast(1.22);
+}
+
+@media (max-width: 767px) {
+  :global([data-theme="light"]) .hero__rings {
+    --rings-opacity: 0.9;
   }
 }
 
@@ -93,10 +215,17 @@ const { t } = useLanguage()
 }
 
 .hero__name {
-  font-size: var(--text-6xl);
+  font-size: var(--text-5xl);
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
   margin-bottom: var(--space-6);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 768px) {
+  .hero__name {
+    font-size: var(--text-6xl);
+  }
 }
 
 .hero__name--accent {
@@ -140,56 +269,4 @@ const { t } = useLanguage()
   border-color: var(--color-primary);
   transform: translateY(-2px);
 }
-
-/* Code editor mockup */
-.hero__code-editor {
-  background: var(--color-surface);
-  border: 1px solid var(--color-card-border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--color-card-shadow);
-}
-
-.hero__code-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-bg-alt);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.hero__code-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.dot--red { background: #ef4444; }
-.dot--yellow { background: #eab308; }
-.dot--green { background: #22c55e; }
-
-.hero__code-filename {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-}
-
-.hero__code-body {
-  padding: var(--space-6);
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  line-height: var(--leading-relaxed);
-  overflow-x: auto;
-}
-
-.code-keyword { color: #c084fc; }
-.code-var { color: #60a5fa; }
-.code-key { color: #67e8f9; }
-.code-string { color: #86efac; }
 </style>

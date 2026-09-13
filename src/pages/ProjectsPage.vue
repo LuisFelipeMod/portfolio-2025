@@ -3,6 +3,7 @@ import { computed, onMounted, nextTick } from 'vue'
 import { useLanguage } from '../composables/useLanguage.js'
 import { useScrollAnimation } from '../composables/useScrollAnimation.js'
 import BaseCard from '../components/ui/BaseCard.vue'
+import FoldText from '../components/effects/FoldText.vue'
 
 const { t } = useLanguage()
 const { observe } = useScrollAnimation()
@@ -46,7 +47,19 @@ onMounted(() => {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           {{ t('allProjects.backHome').value }}
         </router-link>
-        <h1 class="all-projects__title reveal">{{ t('allProjects.title').value }}</h1>
+        <h1 class="all-projects__title">
+          <FoldText
+            :key="t('allProjects.title').value"
+            :text="t('allProjects.title').value"
+            split-by="char"
+            hinge="top"
+            trigger="scroll"
+            :duration="0.6"
+            :stagger="0.035"
+            :crease-shading="0.4"
+            :perspective="700"
+          />
+        </h1>
         <p class="all-projects__subtitle reveal">{{ t('allProjects.subtitle').value }}</p>
       </div>
       <div class="all-projects__grid">
@@ -104,6 +117,9 @@ onMounted(() => {
   font-size: var(--text-4xl);
   font-weight: var(--font-bold);
   margin-bottom: var(--space-4);
+  max-width: 100%;
+  padding-block: 0.12em;
+  overflow-wrap: break-word;
 }
 
 .all-projects__subtitle {
@@ -119,6 +135,12 @@ onMounted(() => {
 }
 
 @media (min-width: 768px) {
+  .all-projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
   .all-projects__grid {
     grid-template-columns: repeat(3, 1fr);
   }

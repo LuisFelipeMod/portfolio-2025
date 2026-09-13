@@ -8,10 +8,9 @@ export default {
   },
   hero: {
     greeting: "Hello, I'm",
-    subtitle: 'Senior Full-Stack Developer crafting modern web experiences with clean code and thoughtful design.',
+    subtitle: 'Senior Full-Stack Engineer building scalable products with TypeScript, Node.js, React, and Next.js.',
     viewWork: 'View My Work',
-    downloadCv: 'Download CV',
-    codePassion: 'Building great UX'
+    downloadCv: 'Download CV'
   },
   expertise: {
     badge: 'What I Do',
@@ -20,15 +19,15 @@ export default {
     items: [
       {
         title: 'Frontend Development',
-        description: 'Building responsive, high-performance interfaces with React, Vue.js, Next.js and Nuxt. Expert in Design Systems, SSR, micro-frontends, and Core Web Vitals optimization.'
+        description: 'Building responsive, high-performance interfaces with React, Vue.js, Next.js, and TypeScript. Experienced in GraphQL and Core Web Vitals optimization (LCP, INP, CLS).'
       },
       {
         title: 'Backend & Architecture',
-        description: 'Designing robust server-side solutions with Node.js, Express and PHP. Experienced in REST APIs, BFF patterns, Socket.io real-time communication, and legacy system modernization.'
+        description: 'Designing robust backends with NestJS and Node.js/TypeScript. Experienced in BFF patterns, REST APIs, event-driven architecture with Socket.io and Redis, and multiple databases (PostgreSQL, MySQL, MongoDB).'
       },
       {
         title: 'Quality & AI Engineering',
-        description: 'Driving quality through TDD with Jest, E2E testing with Cypress, and CI/CD with GitHub Actions. Leveraging AI code agents and LLM integration to boost team productivity.'
+        description: 'Driving quality with TDD (Jest), E2E tests (Cypress), and CI/CD (GitHub Actions). Using AI in the development cycle (Claude Code, Cursor, and Kiro) with critical review of the output.'
       }
     ]
   },
@@ -143,20 +142,20 @@ export default {
       {
         title: 'Senior Software Engineer | Full-Stack',
         company: 'Telecontrol — R&D (AI & Innovation)',
-        period: '2025 - Present',
-        description: 'Leading frontend architecture of a customer service ecosystem (Chatbot/Dashboard). Created the Design System, implemented AI code review agents, and ran POCs with Gemini Pro and MCP, boosting team productivity. Pioneered E2E testing with Cypress and BFF development.'
+        period: 'Nov 2025 - Present',
+        description: 'Brought AI into the development cycle (Claude Code, Cursor, and Kiro), speeding up delivery with critical review. Built resilient integrations (REST, Socket.io) and evolved a NestJS/TypeScript BFF across PostgreSQL, MySQL, and MongoDB. Established Docker, Cypress E2E, and Jest TDD in CI/CD, and shipped a real-time flow platform (Yjs/CRDTs) with Meta API (WhatsApp) integrations.'
       },
       {
         title: 'Software Engineer | Full-Stack',
         company: 'Telecontrol',
-        period: 'Nov 2025 - Present',
-        description: 'Optimized frontend performance on high-traffic systems measured with Core Web Vitals (LCP, INP, CLS). Implemented robust REST API integrations and chatbot/webhook gateways. Promoted to Senior in 3 months by reversing critical churn and stabilizing the product.'
+        period: 'Jul 2025 - Nov 2025',
+        description: 'Maintained and evolved critical systems with REST APIs and communication gateways (chatbots/webhooks). Optimized frontend performance with Core Web Vitals (LCP, INP, CLS). Promoted to Senior for reversing critical churn and stabilizing a high-impact product.'
       },
       {
         title: 'Software Engineer | Frontend',
         company: 'Eficaz Marketing',
-        period: 'Nov 2022 - Feb 2025',
-        description: 'Led technical development of complex headless e-commerce with React, TypeScript and GraphQL. Delivered the Toca Imóveis redesign that sold 104 apartments in record time. Established Code Review culture and defined tech stack and project standards focused on maintainability.'
+        period: 'Jan 2022 - Feb 2025',
+        description: 'Built headless e-commerce with React, Next.js, TypeScript, and GraphQL, focused on scalability and performance. Defined the tech stack and project standards, plus a Code Review and mentoring culture. Redesigned Toca Imóveis, which sold 104 apartments in record time.'
       }
     ]
   },
