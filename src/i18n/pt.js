@@ -152,7 +152,7 @@ export default {
         description: 'Manutenção e evolução de sistemas críticos com APIs REST e gateways de comunicação (Chatbots/Webhooks). Otimizei a performance do frontend com Core Web Vitals (LCP, INP, CLS). Promovido a Sênior por reverter churn crítico e estabilizar produto de alto impacto.'
       },
       {
-        title: 'Software Engineer | Frontend',
+        title: 'Software Engineer',
         company: 'Eficaz Marketing',
         period: 'Jan 2022 - Fev 2025',
         description: 'Desenvolvimento de e-commerce headless com React, Next.js, TypeScript e GraphQL, com foco em escalabilidade e performance. Defini stack técnica e padrões de projeto, com cultura de Code Review e mentoria. Redesign da Toca Imóveis, com 104 apartamentos vendidos em tempo recorde.'

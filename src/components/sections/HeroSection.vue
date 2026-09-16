@@ -30,7 +30,7 @@
         <p class="hero__greeting reveal">{{ t('hero.greeting').value }}</p>
         <h1 class="hero__name reveal">
           Luis Felipe<br />
-          <span class="hero__name--accent">G. Modesto</span>
+          <span class="hero__name--accent">C. Modesto</span>
         </h1>
         <p class="hero__subtitle reveal">
           {{ t('hero.subtitle').value }}

@@ -152,7 +152,7 @@ export default {
         description: 'Maintained and evolved critical systems with REST APIs and communication gateways (chatbots/webhooks). Optimized frontend performance with Core Web Vitals (LCP, INP, CLS). Promoted to Senior for reversing critical churn and stabilizing a high-impact product.'
       },
       {
-        title: 'Software Engineer | Frontend',
+        title: 'Software Engineer',
         company: 'Eficaz Marketing',
         period: 'Jan 2022 - Feb 2025',
         description: 'Built headless e-commerce with React, Next.js, TypeScript, and GraphQL, focused on scalability and performance. Defined the tech stack and project standards, plus a Code Review and mentoring culture. Redesigned Toca Imóveis, which sold 104 apartments in record time.'
