@@ -37,6 +37,13 @@ export default {
     subtitle: 'A selection of recent projects that showcase my skills and passion for development.',
     items: [
       {
+        title: 'ShipSync Hub',
+        description: 'A logistics and freight gateway that aggregates carrier quotes, caches results, and processes requests asynchronously. Built with Laravel and Clean Architecture, using AWS (SQS, DLQ, DynamoDB), Redis/Memcached, resilience patterns, and Pest-driven TDD.',
+        tagline: 'Shipping quotes gateway · async AWS · resilient carriers',
+        source: 'https://github.com/LuisFelipeMod/shipsync_hub',
+        image: '/shipsync-hub.png'
+      },
+      {
         title: 'ModestoLabs',
         description: 'Institutional website for my SaaS laboratory. ModestoLabs creates SaaS products for specific niches — simple on the outside, solid on the inside. Every line of code has a purpose.',
         demo: 'https://modestolabs.up.railway.app/',
@@ -77,13 +84,22 @@ export default {
     ],
     liveDemo: 'Link',
     source: 'Source',
-    viewAll: 'View all projects'
+    viewAll: 'View all projects',
+    expandImage: 'Expand project image',
+    closeExpandedImage: 'Close expanded image'
   },
   allProjects: {
     title: 'All Projects',
     subtitle: 'A complete collection of my work — from full-stack applications to testing frameworks.',
     backHome: 'Back to Home',
     items: [
+      {
+        title: 'ShipSync Hub',
+        description: 'A logistics and freight gateway that aggregates carrier quotes, caches results, and processes requests asynchronously. Built with Laravel and Clean Architecture, using AWS (SQS, DLQ, DynamoDB), Redis/Memcached, resilience patterns, and Pest-driven TDD.',
+        tagline: 'Shipping quotes gateway · async AWS · resilient carriers',
+        source: 'https://github.com/LuisFelipeMod/shipsync_hub',
+        image: '/shipsync-hub.png'
+      },
       {
         title: 'Converge',
         description: 'Real-time collaboration platform (Figma/Miro Lite style) with a shared canvas, presence indicators, and CRDT synchronization (Yjs). Robust architecture natively supporting offline mode and high latency. Built with Vue 3 frontend and NestJS backend via WebSockets and PostgreSQL for incremental persistence.',

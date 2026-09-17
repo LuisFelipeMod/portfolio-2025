@@ -37,6 +37,13 @@ export default {
     subtitle: 'Uma seleção de projetos recentes que demonstram minhas habilidades e paixão por desenvolvimento.',
     items: [
       {
+        title: 'ShipSync Hub',
+        description: 'Gateway de logística e fretes que orquestra cotações de transportadoras, cache e filas assíncronas. Laravel com Clean Architecture, AWS (SQS, DLQ, DynamoDB), Redis/Memcached, padrões de resiliência e testes com Pest (TDD).',
+        tagline: 'Gateway de cotações · AWS assíncrona · transportadoras resilientes',
+        source: 'https://github.com/LuisFelipeMod/shipsync_hub',
+        image: '/shipsync-hub.png'
+      },
+      {
         title: 'ModestoLabs',
         description: 'Site institucional do meu laboratório de SaaS. A ModestoLabs cria produtos SaaS para nichos específicos — simples por fora, sólidos por dentro. Cada linha de código tem um propósito.',
         demo: 'https://modestolabs.up.railway.app/',
@@ -77,13 +84,22 @@ export default {
     ],
     liveDemo: 'Link',
     source: 'Código',
-    viewAll: 'Ver todos os projetos'
+    viewAll: 'Ver todos os projetos',
+    expandImage: 'Expandir imagem do projeto',
+    closeExpandedImage: 'Fechar imagem expandida'
   },
   allProjects: {
     title: 'Todos os Projetos',
     subtitle: 'Uma coleção completa do meu trabalho — de aplicações full-stack a frameworks de testes.',
     backHome: 'Voltar ao Início',
     items: [
+      {
+        title: 'ShipSync Hub',
+        description: 'Gateway de logística e fretes que orquestra cotações de transportadoras, cache e filas assíncronas. Laravel com Clean Architecture, AWS (SQS, DLQ, DynamoDB), Redis/Memcached, padrões de resiliência e testes com Pest (TDD).',
+        tagline: 'Gateway de cotações · AWS assíncrona · transportadoras resilientes',
+        source: 'https://github.com/LuisFelipeMod/shipsync_hub',
+        image: '/shipsync-hub.png'
+      },
       {
         title: 'Converge',
         description: 'Plataforma de colaboração em tempo real (estilo Figma/Miro Lite) com canvas compartilhado, presence indicators e sincronização via CRDTs (Yjs). Arquitetura robusta suportando offline e alta latência nativamente. Frontend Vue 3 e backend NestJS com WebSockets e PostgreSQL para persistência incremental.',

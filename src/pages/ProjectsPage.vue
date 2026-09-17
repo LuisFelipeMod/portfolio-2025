@@ -3,6 +3,7 @@ import { computed, onMounted, nextTick } from 'vue'
 import { useLanguage } from '../composables/useLanguage.js'
 import { useScrollAnimation } from '../composables/useScrollAnimation.js'
 import BaseCard from '../components/ui/BaseCard.vue'
+import ExpandableProjectImage from '../components/ui/ExpandableProjectImage.vue'
 import FoldText from '../components/effects/FoldText.vue'
 
 const { t } = useLanguage()
@@ -11,6 +12,7 @@ const { observe } = useScrollAnimation()
 const projects = computed(() => t('allProjects.items').value)
 
 const techStacks = [
+  ['Laravel', 'AWS', 'SQS', 'DynamoDB', 'Redis', 'Pest'],
   ['Vue 3', 'NestJS', 'CRDTs', 'Socket.io'],
   ['PHP', 'REST API', 'JWT', 'MySQL'],
   ['Next.js', 'React', 'HTML/CSS'],
@@ -65,10 +67,12 @@ onMounted(() => {
       <div class="all-projects__grid">
         <BaseCard v-for="(project, i) in projects" :key="i" class="all-projects__card reveal" :style="{ transitionDelay: `${i * 120}ms` }">
           <div class="all-projects__image">
-            <img v-if="project.image" :src="project.image" :alt="project.title" class="all-projects__image-img" loading="lazy" />
-            <div v-else class="all-projects__image-placeholder" :style="{ background: gradients[i % gradients.length] }">
-              <span class="all-projects__image-label">{{ project.title }}</span>
-            </div>
+            <ExpandableProjectImage
+              :src="project.image"
+              :alt="project.title"
+              :tagline="project.tagline"
+              :gradient="gradients[i % gradients.length]"
+            />
           </div>
           <div class="all-projects__info">
             <h3 class="all-projects__card-title">{{ project.title }}</h3>
@@ -154,27 +158,8 @@ onMounted(() => {
   padding: 0;
 }
 
-.all-projects__image-img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  display: block;
-}
-
-.all-projects__image-placeholder {
-  aspect-ratio: 16 / 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
-
-.all-projects__image-label {
-  font-size: var(--text-lg);
-  font-weight: var(--font-bold);
-  color: #fff;
-  opacity: 0.8;
+.all-projects__image {
+  overflow: hidden;
 }
 
 .all-projects__info {

@@ -11,10 +11,12 @@
       <div class="projects__grid">
         <BaseCard v-for="(project, i) in projectItems" :key="i" class="projects__card reveal" :style="{ transitionDelay: `${i * 120}ms` }">
           <div class="projects__image">
-            <img v-if="project.image" :src="project.image" :alt="project.title" class="projects__image-img" loading="lazy" />
-            <div v-else class="projects__image-placeholder" :style="{ background: gradients[i] }">
-              <span class="projects__image-label">{{ project.title }}</span>
-            </div>
+            <ExpandableProjectImage
+              :src="project.image"
+              :alt="project.title"
+              :tagline="project.tagline"
+              :gradient="gradients[i % gradients.length]"
+            />
           </div>
           <div class="projects__info">
             <h3 class="projects__title">{{ project.title }}</h3>
@@ -50,12 +52,14 @@ import { computed } from 'vue'
 import { useLanguage } from '../../composables/useLanguage.js'
 import SectionTitle from '../ui/SectionTitle.vue'
 import BaseCard from '../ui/BaseCard.vue'
+import ExpandableProjectImage from '../ui/ExpandableProjectImage.vue'
 
 const { t } = useLanguage()
 
 const projectItems = computed(() => t('projects.items').value)
 
 const techStacks = [
+  ['Laravel', 'AWS', 'SQS', 'DynamoDB', 'Redis', 'Pest'],
   ['Vue.js', 'SaaS', 'Railway'],
   ['Vue.js', 'SaaS'],
   ['NestJS', 'Vue 3', 'PostgreSQL', 'JWT'],
@@ -65,6 +69,7 @@ const techStacks = [
 ]
 
 const gradients = [
+  'linear-gradient(135deg, #0ea5e9 0%, #1e3a8a 100%)',
   'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
   'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
   'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
@@ -103,29 +108,6 @@ const gradients = [
 
 .projects__image {
   overflow: hidden;
-}
-
-.projects__image-img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  display: block;
-}
-
-.projects__image-placeholder {
-  aspect-ratio: 16 / 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
-
-.projects__image-label {
-  font-size: var(--text-lg);
-  font-weight: var(--font-bold);
-  color: #fff;
-  opacity: 0.8;
 }
 
 .projects__info {
